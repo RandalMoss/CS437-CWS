@@ -18,7 +18,7 @@ String action = "";
 		this.action = action;
 	}
 
-	public void perform(DataContainer dc, String mode) {
+	public void perform(DataContainer dc) {
 			//Edit 10 20 10
 			String imageName = StringHandler.getCol(action, 1);
 			int amount = 10;
