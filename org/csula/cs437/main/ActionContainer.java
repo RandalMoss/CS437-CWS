@@ -19,8 +19,6 @@ String action = "";
 	}
 
 	public void perform(DataContainer dc, String mode) {
-		if(mode.startsWith("edit")){
-			mode = "edit";
 			//Edit 10 20 10
 			String imageName = StringHandler.getCol(action, 1);
 			int amount = 10;
@@ -157,10 +155,9 @@ String action = "";
 				else {
 					System.out.println("Invalid edit command");
 				}
-		}
-		else if (mode.startsWith("change")){
-			mode="change";
-			String cShirt = StringHandler.getCol(action, 1);
+				
+				//change
+				String cShirt = StringHandler.getCol(action, 1);
 				if(action.equalsIgnoreCase("Change Next cShirt")){
 					dc.changeNext();
 					System.out.println("Change next cShirt");
@@ -180,11 +177,9 @@ String action = "";
 				else {
 					System.out.println("Invalid change command");
 				}
-			
-		}
-		else if(mode.startsWith("save")){
-			mode = "save";
-			String cShirt = StringHandler.getCol(action, 1);
+				
+				//save
+
 				if(action.equalsIgnoreCase("Save as " + cShirt)){
 					dc.saveAs(cShirt);
 					System.out.println("Save as");
@@ -202,4 +197,3 @@ String action = "";
 				}
 		}
 	}
-}
