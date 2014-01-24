@@ -23,9 +23,9 @@ String action = "";
 			mode = "edit";
 			//Edit 10 20 10
 			String imageName = StringHandler.getCol(action, 1);
-			int amount = Integer.parseInt(StringHandler.getCol(action, 1));
-			int degrees = Integer.parseInt(StringHandler.getCol(action, 1));
-			int distance = Integer.parseInt(StringHandler.getCol(action, 1));
+			int amount = 10;
+			int degrees = 20;
+			int distance = 30;
 				if(action.equalsIgnoreCase("Add " + imageName)){
 					dc.editAdd(imageName);
 					System.out.println("Add: " + imageName);
