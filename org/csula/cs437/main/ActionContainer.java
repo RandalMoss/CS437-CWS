@@ -1,28 +1,27 @@
 package org.csula.cs437.main;
 
 import org.csula.cs437.main.DataContainer;
-import org.csula.cs437.util.FileHandler;
 import org.csula.cs437.util.StringHandler;
 
 public class ActionContainer {
-String actionArray[];
+String action = "";
 	
-	public ActionContainer(String scriptFile) {
-		try {
-			actionArray = FileHandler.readFile(scriptFile);
-		} catch (Exception ex) { 
-			System.out.println("ERROR: " + ex.getLocalizedMessage());
-			System.exit(-1);
-		}
+	public ActionContainer() {
+
 	}
 
-	public String[] getActions() {
-		return actionArray;
+	public String getActions() {
+		return action;
+	}
+	
+	public void setActions(String action){
+		this.action = action;
 	}
 
-	public void perform(DataContainer dc, String mode, String action) {
+	public void perform(DataContainer dc, String mode) {
 		if(mode.startsWith("Edit")){
 			mode = "Edit";
+			//Edit 10 20 10
 			String imageName = StringHandler.getCol(action, 1);
 			int amount = Integer.parseInt(StringHandler.getCol(action, 1));
 			int degrees = Integer.parseInt(StringHandler.getCol(action, 1));
