@@ -20,7 +20,8 @@ String action = "";
 
 	public void perform(DataContainer dc) {
 			//Edit 10 20 10
-			String imageName = StringHandler.getCol(action, 1);
+			String imageName = "";
+			String cShirt = "";
 			int amount = 10;
 			int degrees = 20;
 			int distance = 30;
@@ -152,13 +153,9 @@ String action = "";
 					dc.editViewFront();
 					System.out.println("View Front");
 				}
-				else {
-					System.out.println("Invalid edit command");
-				}
 				
 				//change
-				String cShirt = StringHandler.getCol(action, 1);
-				if(action.equalsIgnoreCase("Change Next cShirt")){
+				else if(action.equalsIgnoreCase("Change Next cShirt")){
 					dc.changeNext();
 					System.out.println("Change next cShirt");
 				}
@@ -174,13 +171,10 @@ String action = "";
 					dc.clear();
 					System.out.println("Clear");
 				}
-				else {
-					System.out.println("Invalid change command");
-				}
 				
 				//save
 
-				if(action.equalsIgnoreCase("Save as " + cShirt)){
+				else if(action.equalsIgnoreCase("Save as " + cShirt)){
 					dc.saveAs(cShirt);
 					System.out.println("Save as");
 				}
