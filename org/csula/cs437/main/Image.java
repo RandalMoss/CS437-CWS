@@ -2,7 +2,7 @@ package org.csula.cs437.main;
 
 import org.csula.cs437.util.Section;
 
-public class Image {
+public class Image{
 	
 	private Section section;
 	private String name;
@@ -138,6 +138,8 @@ public class Image {
 		
 		return scale;
 	}
+
+	
 
 	
 }
