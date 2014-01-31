@@ -3,13 +3,7 @@ package org.csula.cs437.gui;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.awt.image.BufferedImage;
 import java.io.File;
-import java.io.FileInputStream;
-import java.io.FileNotFoundException;
-import java.io.IOException;
-
-import javax.imageio.ImageIO;
 import javax.swing.*;
  
 public class cwsGUI {
@@ -24,7 +18,6 @@ public class cwsGUI {
   public cwsGUI() {
     mainPanel.setLayout(new GridLayout(1, 0));
     mainPanel.add(createGridPanel(new String[] {"Button 1", "Button 2", "Button 3"}));
-    //mainPanel.add(createGridPanel(new String[] {"Button 3"}));
   }
  
   public static JMenuBar createMenuBar() {
@@ -52,11 +45,6 @@ public class cwsGUI {
      
   }
   
-  /*private static void showCanvasDemo(){
-      panel.add(new MyCanvas());
-      panel.add(new MyCanvas2());
-   } 
-*/
    static class MyCanvas extends Canvas {
 
       public MyCanvas () {
