@@ -20,7 +20,6 @@ public class cwsGUI {
   static String filename = new String();
   static Panel panel;
   static JFrame frame = new JFrame("Chameleon Wear Shirt");
-  private static BufferedImage image = null;
   
   public cwsGUI() {
     mainPanel.setLayout(new GridLayout(1, 0));
@@ -62,23 +61,24 @@ public class cwsGUI {
 
       public MyCanvas () {
          setBackground (Color.WHITE);
-         setSize(300, 300);
-         try {
-			image = ImageIO.read(new FileInputStream("picture.jpg"));
-		} catch (FileNotFoundException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
+         setPreferredSize(new Dimension(500,450));
       }
 
       public void paint (Graphics g) {
          Graphics2D g2;
          g2 = (Graphics2D) g;
-         g.drawImage(image, 30, 30, this);
-         //g2.drawString ("custom canvas area 1", 70, 70);
+         g2.drawString ("custom canvas area 1", 70, 70);
+         g2.drawLine(5,50, 180,5);
+         g2.drawLine(5,50, 30,145);
+         g2.drawLine(30,145, 105,147);
+         g2.drawLine(105,147, 105,386);
+         g2.drawLine(105,386, 367,386);
+         g2.drawLine(367,386, 367,147);
+         g2.drawLine(367,147, 445,145);
+         g2.drawLine(445,145, 470,50);
+         g2.drawLine(470,50, 295,5);
+         g2.drawArc(180,-20, 115, 50, 180, 180);
+         g2.drawArc(180,-44, 115, 100, 180, 180);
       }
    }
    
@@ -86,13 +86,24 @@ public class cwsGUI {
 
        public MyCanvas2 () {
           setBackground (Color.GRAY);
-          setSize(300, 300);
+          setPreferredSize(new Dimension(500,400));
        }
 
        public void paint (Graphics g) {
           Graphics2D g2;
           g2 = (Graphics2D) g;
           g2.drawString ("custom canvas area 2", 70, 70);
+          g2.drawLine(5,50, 180,5);
+          g2.drawLine(5,50, 30,145);
+          g2.drawLine(30,145, 105,147);
+          g2.drawLine(105,147, 105,386);
+          g2.drawLine(105,386, 367,386);
+          g2.drawLine(367,386, 367,147);
+          g2.drawLine(367,147, 445,145);
+          g2.drawLine(445,145, 470,50);
+          g2.drawLine(470,50, 295,5);
+          g2.drawArc(180,-20, 115, 50, 180, 180);
+          //g2.drawArc(180,-44, 115, 100, 180, 180);
        }
     }
    
@@ -104,16 +115,10 @@ public class cwsGUI {
       tempPanel.add(btn);
       btnPanel.add(tempPanel);
     }
-     
-    /*JLabel label = new JLabel("Canvas", JLabel.CENTER);
-    Dimension labelSize = new Dimension(300, 300);
-    label.setPreferredSize(labelSize );
-    label.setBorder(BorderFactory.createLineBorder(Color.black));
-     */
-    JPanel panel = new JPanel(new BorderLayout(5, 5));
+    
+    JPanel panel = new JPanel(new BorderLayout(5,5));
     int eb = 10;
     panel.setBorder(BorderFactory.createEmptyBorder(eb , eb, eb, eb));
-   // panel.add(label, BorderLayout.CENTER);
     panel.add(new MyCanvas(), BorderLayout.WEST);
     panel.add(new MyCanvas2(), BorderLayout.EAST);
     panel.add(btnPanel, BorderLayout.SOUTH);
@@ -134,7 +139,7 @@ public class cwsGUI {
     frame.setJMenuBar(createMenuBar());
     //panel = new Panel();
     //frame.add(panel);
-    //frame.setSize(1000, 500);
+    //frame.setSize(1000, 1000);
   }
  
   public static void main(String[] args) {
@@ -156,8 +161,6 @@ public class cwsGUI {
 
 			}
 		});}
-        //
-      
     });
   }
 }
