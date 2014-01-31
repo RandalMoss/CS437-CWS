@@ -1,0 +1,8 @@
+<CShirt name="" brightness=100 color=#FFFFFF>
+	<image name="" path="">
+		<section>chest</section>
+		<pos>0.0</pos>
+		<scale>1</scale>
+		<rotation>0</rotation>
+	</image>
+</cShirt>
