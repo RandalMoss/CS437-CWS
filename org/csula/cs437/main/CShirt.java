@@ -2,7 +2,7 @@ package org.csula.cs437.main;
 
 import java.util.ArrayList;
 
-public class CShirt
+public class CShirt extends DataContainer
 {
 	private String name;
 	private int brightness;
@@ -69,6 +69,234 @@ public class CShirt
 		{
 			
 		}
+	}
+
+	@Override
+	public void add(String imageName) {
+		
+	}
+
+	@Override
+	public void brighten() {
+		
+	}
+
+	@Override
+	public void backgroundColor() {
+		
+	}
+
+	@Override
+	public void darken() {
+		
+	}
+
+	@Override
+	public void enlarge(String imageName) {
+		
+	}
+
+	@Override
+	public void enlargeAmount(String imageName, int amount) {
+		
+	}
+
+	@Override
+	public void moveUp(String imageName) {
+		
+		
+	}
+
+	@Override
+	public void moveUpDistance(String imageName, int distance) {
+		
+		
+	}
+
+	@Override
+	public void moveDown(String imageName) {
+		
+		
+	}
+
+	@Override
+	public void moveDownDistance(String imageName, int distance) {
+		
+		
+	}
+
+	@Override
+	public void moveLeft(String imageName) {
+		
+		
+	}
+
+	@Override
+	public void moveLeftDistance(String imageName, int distance) {
+		
+		
+	}
+
+	@Override
+	public void moveRight(String imageName) {
+		
+		
+	}
+
+	@Override
+	public void moveRightDistance(String imageName, int distance) {
+		
+		
+	}
+
+	@Override
+	public void pushBackward(String imageName) {
+		
+		
+	}
+
+	@Override
+	public void pushForward(String imageName) {
+		
+		
+	}
+
+	@Override
+	public void redo() {
+		
+		
+	}
+
+	@Override
+	public void remove(String imageName) {
+		
+		
+	}
+
+	@Override
+	public void rotateClockwise(String imageName) {
+		
+		
+	}
+
+	@Override
+	public void rotateClockwiseDegrees(String imageName, int degrees) {
+		
+		
+	}
+
+	@Override
+	public void rotateCounterclockwise(String imageName) {
+		
+		
+	}
+
+	@Override
+	public void rotateCounterclockwiseDegrees(String imageName, int degrees) {
+		
+		
+	}
+
+	@Override
+	public void rotateToward(int degrees) {
+		
+		
+	}
+
+	@Override
+	public void select(String imageName) {
+		
+		
+	}
+
+	@Override
+	public void sendBack(String imageName) {
+		
+		
+	}
+
+	@Override
+	public void sendFront(String imageName) {
+		
+		
+	}
+
+	@Override
+	public void shrink(String imageName) {
+		
+		
+	}
+
+	@Override
+	public void shrinkAmount(String imageName, int amount) {
+		
+		
+	}
+
+	@Override
+	public void stop() {
+		
+		
+	}
+
+	@Override
+	public void undo() {
+		
+		
+	}
+
+	@Override
+	public void viewBack() {
+		
+		
+	}
+
+	@Override
+	public void viewFront() {
+		
+		
+	}
+
+	@Override
+	public void changeNext() {
+		
+		
+	}
+
+	@Override
+	public void changePrev() {
+		
+		
+	}
+
+	@Override
+	public void changeTo(String cShirt) {
+		
+		
+	}
+
+	@Override
+	public void clear() {
+		
+		
+	}
+
+	@Override
+	public void delete(String cShirt) {
+		
+		
+	}
+
+	@Override
+	public void saveAs(String cShirt) {
+		
+		
+	}
+
+	@Override
+	public void saveCShirt(String cShirt) {
+		
+		
 	}
 	
 	//End construction zone
