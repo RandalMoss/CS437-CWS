@@ -42,7 +42,7 @@ public class Image{
 	
 	public Image()
 	{
-		section = Section.CHEST;
+		section = Section.FRONT;
 		name = "default image one";
 		path = "defaultImage.png";
 		xCoord = 0;
@@ -53,7 +53,7 @@ public class Image{
 	
 	public Image(String path, String name)
 	{
-		section = Section.CHEST;
+		section = Section.FRONT;
 		xCoord = 0;
 		yCoord = 0;
 		scale = 1.0;

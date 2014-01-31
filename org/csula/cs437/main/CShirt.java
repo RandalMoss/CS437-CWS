@@ -2,7 +2,7 @@ package org.csula.cs437.main;
 
 import java.util.ArrayList;
 
-class CShirt
+public class CShirt
 {
 	private String name;
 	private int brightness;
