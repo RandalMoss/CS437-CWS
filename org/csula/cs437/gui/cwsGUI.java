@@ -129,7 +129,7 @@ public class cwsGUI {
 		}
 	}
 
-	private static void createAndShowUI() {
+	public static void createAndShowUI() {
 		JFrame frame = new JFrame("Chameleon Wear Shirt");
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.pack();

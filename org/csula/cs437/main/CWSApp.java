@@ -16,25 +16,11 @@ public class CWSApp {
 		csContainer = new CShirt();
 		ac = new ActionContainer();
 		gui = new cwsGUI();
-		java.awt.EventQueue.invokeLater(new Runnable() {
-		      public void run() {
-		        gui.createAndShowUI();
-		        
-		        //File Chooser
-		        open.addActionListener( new ActionListener() {
-		            public void actionPerformed(ActionEvent ae) {
-						if (FileChooser.showOpenDialog(frame) == JFileChooser.APPROVE_OPTION) {
-							File fin = FileChooser.getSelectedFile();
-							String path = new String();
-							filename = fin.getName();
-							path = fin.getAbsolutePath();
-							System.out.println(path);
-							panel.repaint();
-						}
-
-					}
-				});}
-		    });
+		gui.createAndShowUI();
+		
+		//get the voice command action = voce.getvoicestuff()
+		//ac.setActions(action);
+		//ac.perform(csContainer);
 		
 	}
 }
