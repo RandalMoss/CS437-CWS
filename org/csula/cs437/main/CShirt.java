@@ -81,7 +81,7 @@ public class CShirt
 		writer.close();
 	}
 	
-	public static CShirt loadCShirt(String cShirtName) throws IOException
+	public static CShirt loadCShirt(String cShirtName) throws IOException, JsonSyntaxException
 	{
 		BufferedReader reader = new BufferedReader( new FileReader("/../../CShirts/" + cShirtName + ".cShirt"));
 		String nextLine;
@@ -90,6 +90,7 @@ public class CShirt
 		{
 			cShirtJson += nextLine;
 		}
+		reader.close();
 		
 		return makeCShirtObject(cShirtJson);
 	}
