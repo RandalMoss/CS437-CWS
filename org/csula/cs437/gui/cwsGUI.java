@@ -14,6 +14,15 @@ import javax.swing.*;
 // shrink amount
 
 public class cwsGUI {
+	private String path;
+	
+	public String getPath(){
+		return path;
+	}
+	
+	public void setPath(String path){
+		path = this.path;
+	}
 
 	// static JMenuItem open = new JMenuItem("Open");
 	// static JMenuItem save = new JMenuItem("Save");
@@ -82,7 +91,7 @@ public class cwsGUI {
 	
 	public static int Move(){
 		String move = JOptionPane
-				.showInputDialog("Enter the amount to enlarge");
+				.showInputDialog("Enter the amount to move");
 		int moveAmt = Integer.parseInt( move );
 		return moveAmt;
 			
@@ -90,7 +99,7 @@ public class cwsGUI {
 	
 	public static int Rotate(){
 		String rotate = JOptionPane
-				.showInputDialog("Enter the amount to enlarge");
+				.showInputDialog("Enter the amount to rotate");
 		int rotateAmt = Integer.parseInt( rotate );
 		return rotateAmt;
 			
@@ -98,7 +107,7 @@ public class cwsGUI {
 	
 	public static int Shrink(){
 		String shrink = JOptionPane
-				.showInputDialog("Enter the amount to enlarge");
+				.showInputDialog("Enter the amount to shrink");
 		int shrinkAmt = Integer.parseInt( shrink );
 		return shrinkAmt;
 			

@@ -2,6 +2,7 @@ package org.csula.cs437.main;
 
 import java.io.File;
 import java.util.ArrayList;
+import org.csula.cs437.main.Image;
 
 public class CShirt extends DataContainer
 {
