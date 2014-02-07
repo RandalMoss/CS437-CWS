@@ -1,5 +1,6 @@
 package org.csula.cs437.main;
 
+import java.io.File;
 import java.util.ArrayList;
 
 public class CShirt extends DataContainer
@@ -74,7 +75,11 @@ public class CShirt extends DataContainer
 
 	@Override
 	public void add(String imageName) {
-		
+		//dummy file path
+		String dummyFilePath = "img1.jpg";
+		Image image = new Image(dummyFilePath, imageName);
+		addImage(image);
+		//
 	}
 
 	@Override
