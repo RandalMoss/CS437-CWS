@@ -78,6 +78,7 @@ public class CShirt extends DataContainer
 		String dummyFilePath = "img1.jpg";
 		Image image = new Image(dummyFilePath, imageName);
 		addImage(image);
+		//
 	}
 
 	@Override
