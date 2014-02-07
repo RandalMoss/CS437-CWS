@@ -12,16 +12,18 @@ import java.awt.Panel;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.File;
+
 import javax.swing.*;
 
 import org.csula.cs437.display.ImageCanvas;
 import org.csula.cs437.main.CShirt;
+import org.csula.cs437.main.CShirtController;
 import org.csula.cs437.main.Image;
 
 //options panel: add, enlarge, move, push, remove, rotate, select, send, shrink
 public class cwsGUI {
 
-	private static CShirt shirt;
+	private static CShirtController shirt;
 	static JMenuItem open = new JMenuItem("Open");
 	static JMenuItem save = new JMenuItem("Save");
 	static JFileChooser FileChooser = new JFileChooser(new File("."));
@@ -39,11 +41,11 @@ public class cwsGUI {
 	static JButton Send = new JButton("Send");
 	static JButton Shrink = new JButton("Shrink");
 	
-	public cwsGUI (CShirt shirt){
+	public cwsGUI (CShirtController shirt){
 		this.shirt = shirt;
 	}
 	
-	public CShirt getShirt(){
+	public CShirtController getShirt(){
 		return shirt;
 	}
 	

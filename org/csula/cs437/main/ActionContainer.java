@@ -1,5 +1,7 @@
 package org.csula.cs437.main;
 
+import java.io.IOException;
+
 import org.csula.cs437.main.DataContainer;
 import org.csula.cs437.util.StringHandler;
 
@@ -18,7 +20,7 @@ String action = "";
 		this.action = action;
 	}
 
-	public void perform(CShirt dc) {
+	public void perform(DataContainer dc) {
 			// 10 20 10
 			String imageName = "";
 			String cShirt = "";
@@ -175,11 +177,21 @@ String action = "";
 				//save
 
 				else if(action.equalsIgnoreCase("Save as " + cShirt)){
-					dc.saveAs(cShirt);
+					try {
+						dc.saveAs(cShirt);
+					} catch (IOException e) {
+						// TODO Auto-generated catch block
+						e.printStackTrace();
+					}
 					System.out.println("Save as");
 				}
 				else if(action.equalsIgnoreCase("Save cShirt")){
-					dc.saveCShirt(cShirt);
+					try {
+						dc.saveCShirt();
+					} catch (IOException e) {
+						// TODO Auto-generated catch block
+						e.printStackTrace();
+					}
 					System.out.println("Save cShirt");
 				}
 				else if(action.equalsIgnoreCase("Delete " + cShirt)){

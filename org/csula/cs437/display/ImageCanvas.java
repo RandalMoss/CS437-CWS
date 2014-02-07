@@ -13,6 +13,7 @@ import java.util.ArrayList;
 import javax.imageio.ImageIO;
 
 import org.csula.cs437.main.CShirt;
+import org.csula.cs437.main.CShirtController;
 import org.csula.cs437.main.Image;
 
 public class ImageCanvas {
@@ -20,10 +21,10 @@ public class ImageCanvas {
 	private Graphics g = null;
 	private MyCanvas c1 = new MyCanvas();
 	private MyCanvas2 c2 = new MyCanvas2();
-	static CShirt shirt;
+	static CShirtController shirt;
 	
 	
-	public ImageCanvas(int width, int height, CShirt shirt){
+	public ImageCanvas(int width, int height, CShirtController shirt){
 		bi = new BufferedImage(width, height, 1);
 		g = bi.getGraphics();
 		this.shirt = shirt;
@@ -72,7 +73,7 @@ public class ImageCanvas {
 			g2.drawArc(180, -44, 115, 100, 180, 180);
 			
 			ArrayList<Image> images = new ArrayList<Image>();
-			images = shirt.getImages();
+			images = shirt.getCurrentCShirt().getImages();
 			for(Image image : images){
 				BufferedImage bi;
 				try {
