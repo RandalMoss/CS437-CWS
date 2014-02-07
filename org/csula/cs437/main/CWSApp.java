@@ -9,8 +9,9 @@ public class CWSApp {
 	@SuppressWarnings("static-access")
 	public static void main(String[] args){
 		csContainer = new CShirt();
+		csContainer.addImage(new Image("images/sample.jpg", "sample"));
 		ac = new ActionContainer();
-		gui = new cwsGUI();
+		gui = new cwsGUI(csContainer);
 		gui.createAndShowUI();
 		
 		//get the voice command action = voce.getvoicestuff()

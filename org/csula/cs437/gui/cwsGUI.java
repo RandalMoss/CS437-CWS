@@ -1,14 +1,27 @@
 package org.csula.cs437.gui;
 
-import java.awt.*;
+
+import java.awt.BorderLayout;
+import java.awt.Canvas;
+import java.awt.Color;
+import java.awt.Dimension;
+import java.awt.Graphics;
+import java.awt.Graphics2D;
+import java.awt.GridLayout;
+import java.awt.Panel;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.File;
 import javax.swing.*;
 
+import org.csula.cs437.display.ImageCanvas;
+import org.csula.cs437.main.CShirt;
+import org.csula.cs437.main.Image;
+
 //options panel: add, enlarge, move, push, remove, rotate, select, send, shrink
 public class cwsGUI {
 
+	private static CShirt shirt;
 	static JMenuItem open = new JMenuItem("Open");
 	static JMenuItem save = new JMenuItem("Save");
 	static JFileChooser FileChooser = new JFileChooser(new File("."));
@@ -25,6 +38,14 @@ public class cwsGUI {
 	static JButton Select = new JButton("Select");
 	static JButton Send = new JButton("Send");
 	static JButton Shrink = new JButton("Shrink");
+	
+	public cwsGUI (CShirt shirt){
+		this.shirt = shirt;
+	}
+	
+	public CShirt getShirt(){
+		return shirt;
+	}
 	
 	public static JMenuBar createMenuBar() {
 		JMenuBar menuBar;
@@ -135,11 +156,13 @@ public class cwsGUI {
 		frame.pack();
 		frame.setVisible(true);
 		frame.setJMenuBar(createMenuBar());
-
+		ImageCanvas ic = new ImageCanvas(1100, 500, shirt);
+		
+		ic.addImage(new Image("images/sample.jpg", "sample"));
 		JPanel panel = new JPanel(new BorderLayout(5, 5));
 		panel.setBorder(BorderFactory.createEmptyBorder(10, 10, 10, 10));
-		panel.add(new MyCanvas(), BorderLayout.WEST);
-		panel.add(new MyCanvas2(), BorderLayout.CENTER);
+		panel.add(ic.getMyCanvas(), BorderLayout.WEST);
+		panel.add(ic.getMyCanvas2(), BorderLayout.CENTER);
 		panel.add(optionButton(), BorderLayout.EAST);
 		//panel.add(optionPanel(), BorderLayout.SOUTH);
 		

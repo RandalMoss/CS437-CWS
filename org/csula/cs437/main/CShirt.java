@@ -31,6 +31,7 @@ public class CShirt extends DataContainer
 		this.name = "untitled";
 		this.brightness = 100;
 		this.color = "FFFFFF";
+		images = new ArrayList<Image>();
 	}
 
 	public CShirt(String name, int brightness, String color)
@@ -38,6 +39,7 @@ public class CShirt extends DataContainer
 		this.name = name;
 		this.brightness = brightness;
 		this.color = color;
+		images = new ArrayList<Image>();
 	}
 
 	@Override
