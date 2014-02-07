@@ -5,6 +5,7 @@ import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
+import java.awt.RenderingHints;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
@@ -66,7 +67,16 @@ public class ImageCanvas {
 				BufferedImage bi;
 				try {
 					bi = ImageIO.read(new File(image.getPath()));
-					g.drawImage(bi, image.getxCoord(), image.getyCoord(), null);
+					int newWidth = (int)(bi.getWidth() * image.getScale());
+					int newHeight = (int)(bi.getHeight() * image.getScale());
+					BufferedImage resized = new BufferedImage(newWidth,
+							newHeight,
+							bi.getType());
+				    //g2 = resized.createGraphics();
+				    g2.setRenderingHint(RenderingHints.KEY_INTERPOLATION, RenderingHints.VALUE_INTERPOLATION_BILINEAR);
+				    g2.drawImage(bi, 0, 0, newWidth, newHeight, 0, 0, bi.getWidth(), bi.getHeight(), null);
+				    g2.dispose();
+					//g2.drawImage(bi, image.getxCoord(), image.getyCoord(), null);
 				} catch (IOException e) {
 					// TODO Auto-generated catch block
 					e.printStackTrace();
