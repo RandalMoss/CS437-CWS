@@ -1,10 +1,14 @@
 package org.csula.cs437.main;
 
+
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.io.File;
 import java.util.ArrayList;
+import org.csula.cs437.main.Image;
+
 
 import com.google.gson.Gson;
 import com.google.gson.JsonSyntaxException;
@@ -14,7 +18,11 @@ public class CShirt
 	private String name;
 	private int brightness;
 	private String color;
+
 	private ArrayList<Image> images = new ArrayList<Image>();
+
+	boolean stop = false;
+
 
 	public String getName() {
 		return name;
@@ -37,6 +45,7 @@ public class CShirt
 		this.name = "untitled";
 		this.brightness = 100;
 		this.color = "#FFFFFF";
+
 	}
 
 	public CShirt(String name, int brightness, String color)
@@ -44,6 +53,7 @@ public class CShirt
 		this.name = name;
 		this.brightness = brightness;
 		this.color = color;
+		images = new ArrayList<Image>();
 	}
 
 	@Override
@@ -114,6 +124,7 @@ public class CShirt
 			
 		}
 	}
+
 	//End construction zone
 	
 	//Testing main

@@ -56,7 +56,7 @@ public class Image{
 		section = Section.FRONT;
 		xCoord = 0;
 		yCoord = 0;
-		scale = 1.0;
+		scale = 2.0;
 		rotation = 0.0;
 		
 		this.name = name;
@@ -138,8 +138,4 @@ public class Image{
 		
 		return scale;
 	}
-
-	
-
-	
 }

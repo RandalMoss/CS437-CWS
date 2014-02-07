@@ -1,6 +1,6 @@
 package org.csula.cs437.main;
 
-import org.csula.cs437.main.DataContainer;
+import org.csula.cs437.gui.cwsGUI;
 import org.csula.cs437.util.StringHandler;
 
 public class ActionContainer {
@@ -18,139 +18,127 @@ String action = "";
 		this.action = action;
 	}
 
-	public void perform(DataContainer dc) {
-			//Edit 10 20 10
-			String imageName = "";
-			String cShirt = "";
-			int amount = 10;
-			int degrees = 20;
-			int distance = 30;
-				if(action.equalsIgnoreCase("Add " + imageName)){
-					dc.editAdd(imageName);
-					System.out.println("Add: " + imageName);
+	public void perform(CShirt dc, cwsGUI gui) {
+
+				if(action.equalsIgnoreCase("Add")){
+					String imagePath = cwsGUI.Add();
+					dc.add(imagePath);
+					System.out.println("Add");
 				}
 				else if(action.equalsIgnoreCase("Brighten")){
-					dc.editBrighten();
+					dc.brighten();
 					System.out.println("Brighten");
 				}
 				else if(action.startsWith("Change Background")){
-					dc.editBackgroundColor();
-					System.out.println("Change background: " );
+					String newColor = StringHandler.getCol(action, 2);
+					dc.backgroundColor(newColor);
+					System.out.println("Change background" );
 				}
 				else if(action.equalsIgnoreCase("Darken")){
-					dc.editDarken();
+					dc.darken();
 					System.out.println("Darken");
 				}
-				else if(action.equalsIgnoreCase("Enlarge " + imageName)){
-					dc.editEnlarge(imageName);
-					System.out.println("Enlarge: " + imageName);
+				else if(action.equalsIgnoreCase("Enlarge")){
+					String imagePath = gui.getPath();
+					int amount = cwsGUI.Enlarge();
+					dc.enlarge(imagePath, amount);
+					System.out.println("Enlarge");
 				}
-				else if(action.equalsIgnoreCase("Enlarge " + imageName + " " + amount)){
-					dc.editEnlargeAmount(imageName, amount);
-					System.out.println("Enlarge: " + imageName + " by " + amount);
+				else if(action.equalsIgnoreCase("Move Up")){
+					String imagePath = gui.getPath();
+					int distance = cwsGUI.Move();
+					dc.moveUp(imagePath, distance);
+					System.out.println("Move up");
 				}
-				else if(action.equalsIgnoreCase("Move " + imageName + " Up")){
-					dc.editMoveUp(imageName);
-					System.out.println("Move: " + imageName + " up");
+				else if(action.equalsIgnoreCase("Move Down")){
+					String imagePath = gui.getPath();
+					int distance = cwsGUI.Move();
+					dc.moveDown(imagePath, distance);
+					System.out.println("Move down");
 				}
-				else if(action.equalsIgnoreCase("Move " + imageName + " Up " + distance)){
-					dc.editMoveUpDistance(imageName, distance);
-					System.out.println("Move: " + imageName + " up " + distance);
+				else if(action.equalsIgnoreCase("Move Left")){
+					String imagePath = gui.getPath();
+					int distance = cwsGUI.Move();
+					dc.moveLeft(imagePath, distance);
+					System.out.println("Move left");
 				}
-				else if(action.equalsIgnoreCase("Move " + imageName + " Down")){
-					dc.editMoveDown(imageName);
-					System.out.println("Move: " + imageName + " down");
+				else if(action.equalsIgnoreCase("Move Right")){
+					String imagePath = gui.getPath();
+					int distance = cwsGUI.Move();
+					dc.moveRight(imagePath, distance);
+					System.out.println("Move right");
 				}
-				else if(action.equalsIgnoreCase("Move " + imageName + " Down " + distance)){
-					dc.editMoveDownDistance(imageName, distance);
-					System.out.println("Move: " + imageName + " down " + distance);
+				else if(action.equalsIgnoreCase("Push Backward")){
+					String imagePath = gui.getPath();
+					dc.pushBackward(imagePath);
+					System.out.println("Push backward");
 				}
-				else if(action.equalsIgnoreCase("Move " + imageName + " Left")){
-					dc.editMoveLeft(imageName);
-					System.out.println("Move: " + imageName + " left");
-				}
-				else if(action.equalsIgnoreCase("Move " + imageName + " Left " + distance)){
-					dc.editMoveLeftDistance(imageName, distance);
-					System.out.println("Move: " + imageName + " left " + distance);
-				}
-				else if(action.equalsIgnoreCase("Move " + imageName + " Right")){
-					dc.editMoveRight(imageName);
-					System.out.println("Move: " + imageName + " right");
-				}
-				else if(action.equalsIgnoreCase("Move " + imageName + " Right " + distance)){
-					dc.editMoveRightDistance(imageName, distance);
-					System.out.println("Move: " + imageName + " right " + distance);
-				}
-				else if(action.equalsIgnoreCase("Push " + imageName + " Backward")){
-					dc.editPushBackward(imageName);
-					System.out.println("Push: " + imageName + " backward");
-				}
-				else if(action.equalsIgnoreCase("Push " + imageName + " Foward")){
-					dc.editPushForward(imageName);
-					System.out.println("Push: " + imageName + " fackward");
+				else if(action.equalsIgnoreCase("Push Foward")){
+					String imagePath = gui.getPath();
+					dc.pushForward(imagePath);
+					System.out.println("Push forward");
 				}
 				else if(action.equalsIgnoreCase("Redo")){
-					dc.editRedo();
+					dc.redo();
 					System.out.println("Redo");
 				}
-				else if(action.equalsIgnoreCase("Remove " + imageName)){
-					dc.editRemove(imageName);
-					System.out.println("Remove: " + imageName);
+				else if(action.equalsIgnoreCase("Remove")){
+					String imagePath = gui.getPath();
+					dc.remove(imagePath);
+					System.out.println("Remove");
 				}
-				else if(action.equalsIgnoreCase("Rotate " + imageName + " Clockwise")){
-					dc.editRotateClockwise(imageName);
-					System.out.println("Rotate: " + imageName + "Clockwise");
+				else if(action.equalsIgnoreCase("Rotate Clockwise")){
+					String imagePath = gui.getPath();
+					int degrees = cwsGUI.Rotate();
+					dc.rotateClockwise(imagePath, degrees);
+					System.out.println("Rotate Clockwise");
 				}
-				else if(action.equalsIgnoreCase("Rotate " + imageName + " Clockwise " + degrees)){
-					dc.editRotateClockwiseDegrees(imageName, degrees);
-					System.out.println("Rotate: " + imageName + "Clockwise " + degrees + "degrees");
+				else if(action.equalsIgnoreCase("Rotate Counterclockwise")){
+					String imagePath = gui.getPath();
+					int degrees = cwsGUI.Rotate();
+					dc.rotateCounterclockwise(imagePath, degrees);
+					System.out.println("Rotate Counterclockwise");
 				}
-				else if(action.equalsIgnoreCase("Rotate " + imageName + " Counterclockwise")){
-					dc.editRotateCounterclockwise(imageName);
-					System.out.println("Rotate: " + imageName + "Counterclockwise");
+				else if(action.equalsIgnoreCase("Rotate Toward")){
+					String imagePath = gui.getPath();
+					dc.rotateToward(imagePath);
+					System.out.println("Rotate toward");
 				}
-				else if(action.equalsIgnoreCase("Rotate " + imageName + " Counterclockwise " + degrees)){
-					dc.editRotateCounterclockwiseDegrees(imageName, degrees);
-					System.out.println("Rotate: " + imageName + "Counterclockwise " + degrees + "degrees");
+				else if(action.equalsIgnoreCase("Select")){
+					String imagePath = gui.getPath();
+					dc.select(imagePath);
+					System.out.println("Select");
 				}
-				else if(action.equalsIgnoreCase("Rotate Toward " + degrees)){
-					dc.editRotateToward(degrees);
-					System.out.println("Rotate toward " + degrees + " degrees");
+				else if(action.equalsIgnoreCase("Send to Back")){
+					String imagePath = gui.getPath();
+					dc.sendBack(imagePath);
+					System.out.println("Send to back");
 				}
-				else if(action.equalsIgnoreCase("Select " + imageName)){
-					dc.editSelect(imageName);
-					System.out.println("Select: " + imageName);
+				else if(action.equalsIgnoreCase("Send to Front")){
+					String imagePath = gui.getPath();
+					dc.sendFront(imagePath);
+					System.out.println("Send to front");
 				}
-				else if(action.equalsIgnoreCase("Send " + imageName + " to Back")){
-					dc.editSendBack(imageName);
-					System.out.println("Send: " + imageName + "to back");
-				}
-				else if(action.equalsIgnoreCase("Send " + imageName + " to Front")){
-					dc.editSendFront(imageName);
-					System.out.println("Send: " + imageName + "to front");
-				}
-				else if(action.equalsIgnoreCase("Shrink " + imageName)){
-					dc.editShrink(imageName);
-					System.out.println("Shrink: " + imageName);
-				}
-				else if(action.equalsIgnoreCase("Shrink " + imageName + " " + amount)){
-					dc.editShrinkAmount(imageName, amount);
-					System.out.println("Shrink: " + imageName + " by " + amount);
+				else if(action.equalsIgnoreCase("Shrink")){
+					String imagePath = gui.getPath();
+					int amount = cwsGUI.Shrink();
+					dc.shrink(imagePath, amount);
+					System.out.println("Shrink");
 				}
 				else if(action.equalsIgnoreCase("Stop")){
-					dc.editStop();
+					dc.stop();
 					System.out.println("Stop");
 				}
 				else if(action.equalsIgnoreCase("Undo")){
-					dc.editUndo();
+					dc.undo();
 					System.out.println("Undo");
 				}
 				else if(action.equalsIgnoreCase("View Back")){
-					dc.editViewBack();
+					dc.viewBack();
 					System.out.println("View Back");
 				}
 				else if(action.equalsIgnoreCase("View Front")){
-					dc.editViewFront();
+					dc.viewFront();
 					System.out.println("View Front");
 				}
 				
@@ -163,9 +151,10 @@ String action = "";
 					dc.changePrev();
 					System.out.println("Change previous cShirt");
 				}
-				else if(action.equalsIgnoreCase("Change to " + cShirt)){
+				else if(action.equalsIgnoreCase("Change to")){
+					String cShirt = "";
 					dc.changeTo(cShirt);
-					System.out.println("Change to " + cShirt);
+					System.out.println("Change to");
 				}
 				else if(action.equalsIgnoreCase("Clear")){
 					dc.clear();
@@ -174,17 +163,20 @@ String action = "";
 				
 				//save
 
-				else if(action.equalsIgnoreCase("Save as " + cShirt)){
+				else if(action.equalsIgnoreCase("Save as")){
+					String cShirt = "";
 					dc.saveAs(cShirt);
 					System.out.println("Save as");
 				}
 				else if(action.equalsIgnoreCase("Save cShirt")){
+					String cShirt = "";
 					dc.saveCShirt(cShirt);
 					System.out.println("Save cShirt");
 				}
-				else if(action.equalsIgnoreCase("Delete " + cShirt)){
+				else if(action.equalsIgnoreCase("Delete")){
+					String cShirt = "";
 					dc.delete(cShirt);
-					System.out.println("Delete: " + cShirt);
+					System.out.println("Delete");
 				}
 				else {
 					System.out.println("Invalid save command");
