@@ -1,15 +1,9 @@
 package org.csula.cs437.main;
 
 import java.io.BufferedReader;
-import java.io.BufferedWriter;
-import java.io.FileNotFoundException;
-import java.io.FileOutputStream;
 import java.io.FileReader;
 import java.io.IOException;
-import java.io.InputStreamReader;
-import java.io.OutputStreamWriter;
-import java.io.Reader;
-import java.io.Writer;
+import java.io.PrintWriter;
 import java.util.ArrayList;
 
 import com.google.gson.Gson;
@@ -75,15 +69,18 @@ public class CShirt
 	
 	public void saveCShirt() throws IOException
 	{
-		Writer writer = new BufferedWriter(new OutputStreamWriter(
-		          new FileOutputStream("/../../CShirts/" + this.name + ".cShirt"), "utf-8"));;
+		ClassLoader classLoader = Thread.currentThread().getContextClassLoader();
+		String url = classLoader.getResource(".").getPath();
+		PrintWriter writer = new PrintWriter((url + "/CShirts/" + this.name + ".cShirt").replace("%20", " "));
 		writer.write(makeCShirtFile(this));
 		writer.close();
 	}
 	
 	public static CShirt loadCShirt(String cShirtName) throws IOException, JsonSyntaxException
 	{
-		BufferedReader reader = new BufferedReader( new FileReader("/../../CShirts/" + cShirtName + ".cShirt"));
+		ClassLoader classLoader = Thread.currentThread().getContextClassLoader();
+		String url = classLoader.getResource(".").getPath();
+		BufferedReader reader = new BufferedReader( new FileReader((url + "/CShirts/" + cShirtName + ".cShirt").replace("%20", " ")));
 		String nextLine;
 		String cShirtJson = "";
 		while((nextLine = reader.readLine()) != null )
@@ -119,7 +116,6 @@ public class CShirt
 	}
 	//End construction zone
 	
-	/*
 	//Testing main
 	public static void main(String[] args)
 	{
@@ -127,9 +123,20 @@ public class CShirt
 		cShirt.addImage(new Image("This is some path", "and this is a name"));
 		cShirt.addImage(new Image("This is the second path", "and yet another name"));
 		
-		System.out.println(CShirt.makeCShirtFile(cShirt));
+		try {
+			cShirt.saveCShirt();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		try{
+			System.out.println(CShirt.loadCShirt("test").toString());
+		} catch (Exception e){
+			e.printStackTrace();
+		}
 	}
-	*/
+	
 	
 	
 }
