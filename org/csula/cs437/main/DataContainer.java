@@ -1,5 +1,7 @@
 package org.csula.cs437.main;
 
+import java.io.IOException;
+
 public abstract class DataContainer {
 	int id;
 	protected DataContainer() {
@@ -52,7 +54,7 @@ public abstract class DataContainer {
 	
 	//Save Commands
 	public abstract void delete(String cShirt);
-	public abstract void saveAs(String cShirt);
-	public abstract void saveCShirt(String cShirt);
+	public abstract void saveAs(String cShirt) throws IOException;
+	public abstract void saveCShirt() throws IOException;
 	
 }

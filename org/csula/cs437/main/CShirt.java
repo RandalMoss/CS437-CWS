@@ -8,9 +8,8 @@ import java.util.ArrayList;
 
 import com.google.gson.Gson;
 import com.google.gson.JsonSyntaxException;
-import java.io.File;
 
-public class CShirt extends DataContainer
+public class CShirt
 {
 	private String name;
 	private int brightness;
@@ -69,20 +68,21 @@ public class CShirt extends DataContainer
 		return gson.fromJson(cShirtJson, CShirt.class);
 	}
 	
-	public void saveCShirt() throws IOException
+	public void saveCShirt(String path) throws IOException
 	{
-		ClassLoader classLoader = Thread.currentThread().getContextClassLoader();
-		String url = classLoader.getResource(".").getPath();
-		PrintWriter writer = new PrintWriter((url + "/CShirts/" + this.name + ".cShirt").replace("%20", " "));
+		saveCShirt(this.name, path);
+	}
+	
+	public void saveCShirt(String name, String path) throws IOException
+	{
+		PrintWriter writer = new PrintWriter((path + "/CShirts/" + name + ".cShirt"));
 		writer.write(makeCShirtFile(this));
 		writer.close();
 	}
 	
-	public static CShirt loadCShirt(String cShirtName) throws IOException, JsonSyntaxException
+	public static CShirt loadCShirt(String cShirtPath) throws IOException, JsonSyntaxException
 	{
-		ClassLoader classLoader = Thread.currentThread().getContextClassLoader();
-		String url = classLoader.getResource(".").getPath();
-		BufferedReader reader = new BufferedReader( new FileReader((url + "/CShirts/" + cShirtName + ".cShirt").replace("%20", " ")));
+		BufferedReader reader = new BufferedReader(new FileReader(cShirtPath));
 		String nextLine;
 		String cShirtJson = "";
 		while((nextLine = reader.readLine()) != null )
@@ -117,236 +117,12 @@ public class CShirt extends DataContainer
 		}
 	}
 
-	@Override
 	public void add(String imageName) {
 		//dummy file path
 		String dummyFilePath = "img1.jpg";
 		Image image = new Image(dummyFilePath, imageName);
 		addImage(image);
 		//
-	}
-
-	@Override
-	public void brighten() {
-		
-	}
-
-	@Override
-	public void backgroundColor() {
-		
-	}
-
-	@Override
-	public void darken() {
-		
-	}
-
-	@Override
-	public void enlarge(String imageName) {
-		
-	}
-
-	@Override
-	public void enlargeAmount(String imageName, int amount) {
-		
-	}
-
-	@Override
-	public void moveUp(String imageName) {
-		
-		
-	}
-
-	@Override
-	public void moveUpDistance(String imageName, int distance) {
-		
-		
-	}
-
-	@Override
-	public void moveDown(String imageName) {
-		
-		
-	}
-
-	@Override
-	public void moveDownDistance(String imageName, int distance) {
-		
-		
-	}
-
-	@Override
-	public void moveLeft(String imageName) {
-		
-		
-	}
-
-	@Override
-	public void moveLeftDistance(String imageName, int distance) {
-		
-		
-	}
-
-	@Override
-	public void moveRight(String imageName) {
-		
-		
-	}
-
-	@Override
-	public void moveRightDistance(String imageName, int distance) {
-		
-		
-	}
-
-	@Override
-	public void pushBackward(String imageName) {
-		
-		
-	}
-
-	@Override
-	public void pushForward(String imageName) {
-		
-		
-	}
-
-	@Override
-	public void redo() {
-		
-		
-	}
-
-	@Override
-	public void remove(String imageName) {
-		
-		
-	}
-
-	@Override
-	public void rotateClockwise(String imageName) {
-		
-		
-	}
-
-	@Override
-	public void rotateClockwiseDegrees(String imageName, int degrees) {
-		
-		
-	}
-
-	@Override
-	public void rotateCounterclockwise(String imageName) {
-		
-		
-	}
-
-	@Override
-	public void rotateCounterclockwiseDegrees(String imageName, int degrees) {
-		
-		
-	}
-
-	@Override
-	public void rotateToward(int degrees) {
-		
-		
-	}
-
-	@Override
-	public void select(String imageName) {
-		
-		
-	}
-
-	@Override
-	public void sendBack(String imageName) {
-		
-		
-	}
-
-	@Override
-	public void sendFront(String imageName) {
-		
-		
-	}
-
-	@Override
-	public void shrink(String imageName) {
-		
-		
-	}
-
-	@Override
-	public void shrinkAmount(String imageName, int amount) {
-		
-		
-	}
-
-	@Override
-	public void stop() {
-		
-		
-	}
-
-	@Override
-	public void undo() {
-		
-		
-	}
-
-	@Override
-	public void viewBack() {
-		
-		
-	}
-
-	@Override
-	public void viewFront() {
-		
-		
-	}
-
-	@Override
-	public void changeNext() {
-		
-		
-	}
-
-	@Override
-	public void changePrev() {
-		
-		
-	}
-
-	@Override
-	public void changeTo(String cShirt) {
-		
-		
-	}
-
-	@Override
-	public void clear() {
-		
-		
-	}
-
-	@Override
-	public void delete(String cShirt) {
-		
-		
-	}
-
-	@Override
-	public void saveAs(String cShirt) {
-		
-		
-	}
-
-	@Override
-	public void saveCShirt(String cShirt) {
-		
-		
 	}
 	//End construction zone
 	
