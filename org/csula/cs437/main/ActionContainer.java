@@ -18,8 +18,7 @@ String action = "";
 		this.action = action;
 	}
 
-	public void perform(CShirt dc) {
-		cwsGUI gui = new cwsGUI();
+	public void perform(CShirt dc, cwsGUI gui) {
 				if(action.equalsIgnoreCase("Add")){
 					String imagePath = cwsGUI.Add();
 					dc.add(imagePath);
@@ -39,43 +38,43 @@ String action = "";
 					System.out.println("Darken");
 				}
 				else if(action.equalsIgnoreCase("Enlarge")){
-					String imagePath = gui.getPath();
-					int amount = cwsGUI.Enlarge();
-					dc.enlarge(imagePath, amount);
+					String imageName = gui.getName();
+					double amount = cwsGUI.Enlarge();
+					dc.enlarge(imageName, amount);
 					System.out.println("Enlarge");
 				}
 				else if(action.equalsIgnoreCase("Move Up")){
-					String imagePath = gui.getPath();
+					String imageName = gui.getName();
 					int distance = cwsGUI.Move();
-					dc.moveUp(imagePath, distance);
+					dc.moveUp(imageName, distance);
 					System.out.println("Move up");
 				}
 				else if(action.equalsIgnoreCase("Move Down")){
-					String imagePath = gui.getPath();
+					String imageName = gui.getName();
 					int distance = cwsGUI.Move();
-					dc.moveDown(imagePath, distance);
+					dc.moveDown(imageName, distance);
 					System.out.println("Move down");
 				}
 				else if(action.equalsIgnoreCase("Move Left")){
-					String imagePath = gui.getPath();
+					String imageName = gui.getName();
 					int distance = cwsGUI.Move();
-					dc.moveLeft(imagePath, distance);
+					dc.moveLeft(imageName, distance);
 					System.out.println("Move left");
 				}
 				else if(action.equalsIgnoreCase("Move Right")){
-					String imagePath = gui.getPath();
+					String imageName = gui.getName();
 					int distance = cwsGUI.Move();
-					dc.moveRight(imagePath, distance);
+					dc.moveRight(imageName, distance);
 					System.out.println("Move right");
 				}
 				else if(action.equalsIgnoreCase("Push Backward")){
-					String imagePath = gui.getPath();
-					dc.pushBackward(imagePath);
+					String imageName = gui.getName();
+					dc.pushBackward(imageName);
 					System.out.println("Push backward");
 				}
 				else if(action.equalsIgnoreCase("Push Foward")){
-					String imagePath = gui.getPath();
-					dc.pushForward(imagePath);
+					String imageName = gui.getName();
+					dc.pushForward(imageName);
 					System.out.println("Push forward");
 				}
 				else if(action.equalsIgnoreCase("Redo")){
@@ -83,46 +82,47 @@ String action = "";
 					System.out.println("Redo");
 				}
 				else if(action.equalsIgnoreCase("Remove")){
-					String imagePath = gui.getPath();
-					dc.remove(imagePath);
+					String imageName = gui.getName();
+					dc.remove(imageName);
 					System.out.println("Remove");
 				}
 				else if(action.equalsIgnoreCase("Rotate Clockwise")){
-					String imagePath = gui.getPath();
-					int degrees = cwsGUI.Rotate();
-					dc.rotateClockwise(imagePath, degrees);
+					String imageName = gui.getName();
+					double degrees = cwsGUI.Rotate();
+					dc.rotateClockwise(imageName, degrees);
 					System.out.println("Rotate Clockwise");
 				}
 				else if(action.equalsIgnoreCase("Rotate Counterclockwise")){
-					String imagePath = gui.getPath();
-					int degrees = cwsGUI.Rotate();
-					dc.rotateCounterclockwise(imagePath, degrees);
+					String imageName = gui.getName();
+					double degrees = cwsGUI.Rotate();
+					dc.rotateCounterclockwise(imageName, degrees);
 					System.out.println("Rotate Counterclockwise");
 				}
 				else if(action.equalsIgnoreCase("Rotate Toward")){
-					String imagePath = gui.getPath();
-					dc.rotateToward(imagePath);
+					String imageName = gui.getName();
+					dc.rotateToward(imageName);
 					System.out.println("Rotate toward");
 				}
+				/*
 				else if(action.equalsIgnoreCase("Select")){
-					String imagePath = gui.getPath();
-					dc.select(imagePath);
+					String imageName = gui.getName();
+					dc.select(imageName);
 					System.out.println("Select");
-				}
+				} */
 				else if(action.equalsIgnoreCase("Send to Back")){
-					String imagePath = gui.getPath();
-					dc.sendBack(imagePath);
+					String imageName = gui.getName();
+					dc.sendBack(imageName);
 					System.out.println("Send to back");
 				}
 				else if(action.equalsIgnoreCase("Send to Front")){
-					String imagePath = gui.getPath();
-					dc.sendFront(imagePath);
+					String imageName = gui.getName();
+					dc.sendFront(imageName);
 					System.out.println("Send to front");
 				}
 				else if(action.equalsIgnoreCase("Shrink")){
-					String imagePath = gui.getPath();
-					int amount = cwsGUI.Shrink();
-					dc.shrink(imagePath, amount);
+					String imageName = gui.getName();
+					double amount = cwsGUI.Shrink();
+					dc.shrink(imageName, amount);
 					System.out.println("Shrink");
 				}
 				else if(action.equalsIgnoreCase("Stop")){

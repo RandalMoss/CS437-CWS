@@ -62,11 +62,11 @@ public class CShirt extends DataContainer
 	public ArrayList<Image> addImage(Image image)
 	{
 		images.add(image);
-		
+		System.out.println("Image Added");
 		return images;
 	}
 	
-	public void removeImage(String name)
+	public void removeImage(String imageName)
 	{
 		for(int i = 0; i < images.size(); i++)
 		{
@@ -103,109 +103,112 @@ public class CShirt extends DataContainer
 	}
 
 	@Override
-	public void enlarge(String imageName, int amount) {
+	public void enlarge(String imageName, double amount) {
 		
+		System.out.println("Image enlarged");
 	}
 
 	@Override
 	public void moveUp(String imageName, int distance) {
-		
+		System.out.println("Image moved up");
 		
 	}
 
 	@Override
 	public void moveDown(String imageName, int distance) {
-		
+		System.out.println("Image moved down");
 		
 	}
 
 	@Override
 	public void moveLeft(String imageName, int distance) {
-		
+		System.out.println("Image moved left");
 		
 	}
 	
 	@Override
 	public void moveRight(String imageName, int distance) {
-		
+		System.out.println("Image moved right");
 		
 	}
 	
 	@Override
 	public void pushBackward(String imageName) {
-		
+		System.out.println("Image pushed backward");
 		
 	}
 
 	@Override
 	public void pushForward(String imageName) {
 		
-		
+		System.out.println("Image pushed forward");
 	}
 
 	@Override
 	public void redo() {
 		
-		
+		System.out.println("Redo action");
 	}
 
 	@Override
 	public void remove(String imageName) {
 		
+		System.out.println("Image removed");
+	}
+
+	@Override
+	public void rotateClockwise(String imageName, double degrees) {
+		System.out.println("Image rotated clockwise");
 		
 	}
 
 	@Override
-	public void rotateClockwise(String imageName, int degrees) {
+	public void rotateCounterclockwise(String imageName, double degrees) {
 		
-		
-	}
-
-	@Override
-	public void rotateCounterclockwise(String imageName, int degrees) {
-		
-		
+		System.out.println("Image rotate counterclockwise");
 	}
 
 	@Override
 	public void rotateToward(String imageName) {
-		
+		System.out.println("Image rotated toward");
 		
 	}
 
+	/*
 	@Override
 	public void select(String imageName) {
+		System.out.println("Image selected");
 		
-		
-	}
+	} */
 
 	@Override
 	public void sendBack(String imageName) {
-		
+		System.out.println("Image sent to back");
 		
 	}
 
 	@Override
 	public void sendFront(String imageName) {
 		
-		
+		System.out.println("Image sent to front");
 	}
 
 	@Override
-	public void shrink(String imageName, int amount) {
+	public void shrink(String imageName, double amount) {
 		
-		
+		System.out.println("Image shrunk");
 	}
 
 	@Override
 	public void stop() {
 		stop = true;
+		System.out.println("Action stopped");
 	}
 
 	@Override
 	public void undo() {
 		
-		
+		System.out.println("Undo action");
 	}
 
 	@Override

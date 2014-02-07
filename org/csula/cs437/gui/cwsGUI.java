@@ -23,6 +23,10 @@ public class cwsGUI {
 	public void setPath(String path){
 		path = this.path;
 	}
+	
+	public String getName(){
+		return filename;
+	}
 
 	// static JMenuItem open = new JMenuItem("Open");
 	// static JMenuItem save = new JMenuItem("Save");
@@ -81,36 +85,53 @@ public class cwsGUI {
 		
 	}
 	
-	public static int Enlarge(){
+	public static double Enlarge(){
 		String enlarge = JOptionPane
 				.showInputDialog("Enter the amount to enlarge");
-		int enlargeAmt = Integer.parseInt( enlarge );
+		if(enlarge == ""){
+			double enlargeAmt = 1.0;
+			return enlargeAmt;
+		} else {
+		double enlargeAmt = Double.parseDouble( enlarge );
 		return enlargeAmt;
+		}
 			
 	}
 	
 	public static int Move(){
 		String move = JOptionPane
 				.showInputDialog("Enter the amount to move");
+		if(move == ""){
+			int moveAmt = 5;
+			return moveAmt;
+		} else {
 		int moveAmt = Integer.parseInt( move );
 		return moveAmt;
-			
+		}
 	}
 	
-	public static int Rotate(){
+	public static double Rotate(){
 		String rotate = JOptionPane
 				.showInputDialog("Enter the amount to rotate");
-		int rotateAmt = Integer.parseInt( rotate );
+		if(rotate == ""){
+			double rotateAmt = 5.0;
+			return rotateAmt;
+		} else {
+		double rotateAmt = Double.parseDouble( rotate );
 		return rotateAmt;
-			
+		}
 	}
 	
-	public static int Shrink(){
+	public static double Shrink(){
 		String shrink = JOptionPane
 				.showInputDialog("Enter the amount to shrink");
-		int shrinkAmt = Integer.parseInt( shrink );
+		if(shrink == ""){
+			double shrinkAmt = 0.5;
+			return shrinkAmt;
+		} else {
+		double shrinkAmt = Double.parseDouble( shrink );
 		return shrinkAmt;
-			
+		}
 	}
 	
 	//Button panel, for testing
