@@ -138,8 +138,4 @@ public class Image{
 		
 		return scale;
 	}
-
-	
-
-	
 }

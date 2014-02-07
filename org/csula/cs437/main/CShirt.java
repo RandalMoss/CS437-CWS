@@ -8,6 +8,7 @@ public class CShirt extends DataContainer
 	private int brightness;
 	private String color;
 	private ArrayList<Image> images;
+	boolean stop = false;
 
 	public String getName() {
 		return name;
@@ -78,77 +79,52 @@ public class CShirt extends DataContainer
 
 	@Override
 	public void brighten() {
-		
+		while(stop != true){
+			brightness += 5;
+		}
 	}
 
 	@Override
-	public void backgroundColor() {
-		
+	public void backgroundColor(String newColor) {
+		color = newColor;
 	}
 
 	@Override
 	public void darken() {
+		while(stop != true){
+			brightness -= 5;
+		}
+	}
+
+	@Override
+	public void enlarge(String imageName, int amount) {
 		
 	}
 
 	@Override
-	public void enlarge(String imageName) {
-		
-	}
-
-	@Override
-	public void enlargeAmount(String imageName, int amount) {
-		
-	}
-
-	@Override
-	public void moveUp(String imageName) {
+	public void moveUp(String imageName, int distance) {
 		
 		
 	}
 
 	@Override
-	public void moveUpDistance(String imageName, int distance) {
+	public void moveDown(String imageName, int distance) {
 		
 		
 	}
 
 	@Override
-	public void moveDown(String imageName) {
+	public void moveLeft(String imageName, int distance) {
 		
 		
 	}
-
+	
 	@Override
-	public void moveDownDistance(String imageName, int distance) {
+	public void moveRight(String imageName, int distance) {
 		
 		
 	}
-
-	@Override
-	public void moveLeft(String imageName) {
-		
-		
-	}
-
-	@Override
-	public void moveLeftDistance(String imageName, int distance) {
-		
-		
-	}
-
-	@Override
-	public void moveRight(String imageName) {
-		
-		
-	}
-
-	@Override
-	public void moveRightDistance(String imageName, int distance) {
-		
-		
-	}
-
+	
 	@Override
 	public void pushBackward(String imageName) {
 		
@@ -174,31 +150,19 @@ public class CShirt extends DataContainer
 	}
 
 	@Override
-	public void rotateClockwise(String imageName) {
+	public void rotateClockwise(String imageName, int degrees) {
 		
 		
 	}
 
 	@Override
-	public void rotateClockwiseDegrees(String imageName, int degrees) {
+	public void rotateCounterclockwise(String imageName, int degrees) {
 		
 		
 	}
 
 	@Override
-	public void rotateCounterclockwise(String imageName) {
-		
-		
-	}
-
-	@Override
-	public void rotateCounterclockwiseDegrees(String imageName, int degrees) {
-		
-		
-	}
-
-	@Override
-	public void rotateToward(int degrees) {
+	public void rotateToward(String imageName) {
 		
 		
 	}
@@ -222,21 +186,14 @@ public class CShirt extends DataContainer
 	}
 
 	@Override
-	public void shrink(String imageName) {
-		
-		
-	}
-
-	@Override
-	public void shrinkAmount(String imageName, int amount) {
+	public void shrink(String imageName, int amount) {
 		
 		
 	}
 
 	@Override
 	public void stop() {
-		
-		
+		stop = true;
 	}
 
 	@Override
