@@ -47,7 +47,7 @@ public class CWSApp {
 						}
 
 						ac.setActions(s);
-						ac.perform(csContainer);
+						ac.perform(csContainer, gui);
 						
 						System.out.println("You said: " + s);
 						if(s.equals(activation)){

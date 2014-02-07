@@ -37,17 +37,6 @@ public class ImageCanvas {
 		return c2;
 	}
 	
-	public void addImage(Image image){
-		try {
-			BufferedImage bi = ImageIO.read(new File(image.getPath()));
-			g.drawImage(bi, image.getxCoord(), image.getyCoord(), null);
-			c1.repaint();
-			c2.repaint();
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
-	}
-	
 	static class MyCanvas extends Canvas {
 
 		public MyCanvas() {
@@ -108,6 +97,19 @@ public class ImageCanvas {
 			g2.drawLine(470, 50, 295, 5);
 			g2.drawArc(180, -20, 115, 50, 180, 180);
 			// g2.drawArc(180,-44, 115, 100, 180, 180);
+			
+			ArrayList<Image> images = new ArrayList<Image>();
+			images = shirt.getImages();
+			for(Image image : images){
+				BufferedImage bi;
+				try {
+					bi = ImageIO.read(new File(image.getPath()));
+					g.drawImage(bi, image.getxCoord(), image.getyCoord(), null);
+				} catch (IOException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+			}
 		}
 	}
 }

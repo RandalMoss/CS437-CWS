@@ -19,15 +19,34 @@ import org.csula.cs437.main.CShirt;
 import org.csula.cs437.main.Image;
 
 //options panel: add, enlarge, move, push, remove, rotate, select, send, shrink
+//add = file opener
+//enlarge = amount
+//move distance
+//rotate degree
+// shrink amount
+
 public class cwsGUI {
+	private String path;
+	
+	public String getPath(){
+		return path;
+	}
+	
+	public void setPath(String path){
+		path = this.path;
+	}
 
 	private static CShirt shirt;
 	static JMenuItem open = new JMenuItem("Open");
 	static JMenuItem save = new JMenuItem("Save");
+
 	static JFileChooser FileChooser = new JFileChooser(new File("."));
 	static String filename = new String();
 	static Panel panel;
 	static JFrame frame = new JFrame("Chameleon Wear Shirt");
+	
+	//Buttons
+	/*
 	static JLabel option = new JLabel("Options Menu");
 	static JButton Add = new JButton("Add");
 	static JButton Enlarge = new JButton("Enlarge");
@@ -38,6 +57,7 @@ public class cwsGUI {
 	static JButton Select = new JButton("Select");
 	static JButton Send = new JButton("Send");
 	static JButton Shrink = new JButton("Shrink");
+*/
 	
 	public cwsGUI (CShirt shirt){
 		this.shirt = shirt;
@@ -69,37 +89,95 @@ public class cwsGUI {
 		menuBar.add(jMenu2);
 
 		return menuBar;
-
 	}
+	//MenuBar not using
+	/*
+	 * public static JMenuBar createMenuBar() { JMenuBar menuBar;
+	 * 
+	 * // Create the menu bar. menuBar = new JMenuBar();
+	 * 
+	 * // Build the first menu. JMenu jMenu1 = new JMenu("File");
+	 * 
+	 * jMenu1.add(open); jMenu1.add(save);
+	 * 
+	 * JMenu jMenu2 = new JMenu("Edit");
+	 * 
+	 * JMenuBar jMenuBar1 = new JMenuBar(); jMenuBar1.add(jMenu1);
+	 * jMenuBar1.add(jMenu2);
+	 * 
+	 * menuBar.add(jMenu1); menuBar.add(jMenu2);
+	 * 
+	 * return menuBar;
+	 * 
+	 * }
+	 */
 
-	public static Panel optionButton() {
+	public static String Add(){
+		String path = new String();
+		
+		if (FileChooser.showOpenDialog(frame) == JFileChooser.APPROVE_OPTION) {
+			File fin = FileChooser.getSelectedFile();
+			filename = fin.getName();
+			path = fin.getAbsolutePath();
+			System.out.println(path);
+		}
+		
+		return path;
+	}
+	
+	public static int Enlarge(){
+		String enlarge = JOptionPane
+				.showInputDialog("Enter the amount to enlarge");
+		int enlargeAmt = Integer.parseInt( enlarge );
+		return enlargeAmt;
+			
+	}
+	
+	public static int Move(){
+		String move = JOptionPane
+				.showInputDialog("Enter the amount to move");
+		int moveAmt = Integer.parseInt( move );
+		return moveAmt;
+			
+	}
+	
+	public static int Rotate(){
+		String rotate = JOptionPane
+				.showInputDialog("Enter the amount to rotate");
+		int rotateAmt = Integer.parseInt( rotate );
+		return rotateAmt;
+			
+	}
+	
+	public static int Shrink(){
+		String shrink = JOptionPane
+				.showInputDialog("Enter the amount to shrink");
+		int shrinkAmt = Integer.parseInt( shrink );
+		return shrinkAmt;
+			
+	}
+	
+	//Button panel, for testing
+	
+	/*public static Panel optionButton() {
 		Panel optionButton;
 
-		optionButton = new Panel(new GridLayout(10, 1));
+		optionButton = new Panel(new GridLayout(6, 1));
 
 		optionButton.add(option);
 		optionButton.add(Add);
 		optionButton.add(Enlarge);
 		optionButton.add(Move);
-		optionButton.add(Push);
-		optionButton.add(Remove);
+		//optionButton.add(Push);
+		//optionButton.add(Remove);
 		optionButton.add(Rotate);
-		optionButton.add(Select);
-		optionButton.add(Send);
+		//optionButton.add(Select);
+		//optionButton.add(Send);
 		optionButton.add(Shrink);
 		return optionButton;
 
 	}
-	
-	public static Panel optionPanel() {
-		final Panel optionPanel;
-		optionPanel = new Panel();
-		final JTextField tf = null;
-		
-		
-		return optionPanel;
-	}
-
+*/
 	static class MyCanvas extends Canvas {
 
 		public MyCanvas() {
@@ -155,20 +233,18 @@ public class cwsGUI {
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.pack();
 		frame.setVisible(true);
+
 		frame.setJMenuBar(createMenuBar());
 		ImageCanvas ic = new ImageCanvas(1100, 500, shirt);
-		
-		ic.addImage(new Image("images/sample.jpg", "sample"));
 		JPanel panel = new JPanel(new BorderLayout(5, 5));
 		panel.setBorder(BorderFactory.createEmptyBorder(10, 10, 10, 10));
 		panel.add(ic.getMyCanvas(), BorderLayout.WEST);
 		panel.add(ic.getMyCanvas2(), BorderLayout.CENTER);
-		panel.add(optionButton(), BorderLayout.EAST);
+		//panel.add(optionButton(), BorderLayout.EAST);
 		//panel.add(optionPanel(), BorderLayout.SOUTH);
-		
 		// panel = new Panel();
 		frame.add(panel);
-		frame.setSize(1100, 500);
+		frame.setSize(1050, 450);
 	}
 
 	public static void main(String[] args) {
@@ -176,20 +252,6 @@ public class cwsGUI {
 			public void run() {
 				createAndShowUI();
 
-				// File Chooser
-				open.addActionListener(new ActionListener() {
-					public void actionPerformed(ActionEvent ae) {
-						if (FileChooser.showOpenDialog(frame) == JFileChooser.APPROVE_OPTION) {
-							File fin = FileChooser.getSelectedFile();
-							String path = new String();
-							filename = fin.getName();
-							path = fin.getAbsolutePath();
-							System.out.println(path);
-							panel.repaint();
-						}
-
-					}
-				});
 			}
 		});
 	}
