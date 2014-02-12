@@ -1,5 +1,7 @@
 package org.csula.cs437.main;
 
+import java.io.IOException;
+
 public abstract class DataContainer {
 	int id;
 	protected DataContainer() {
@@ -26,7 +28,7 @@ public abstract class DataContainer {
 	public abstract void remove(String imagePath);
 	public abstract void rotateClockwise(String imagePath, int degrees);
 	public abstract void rotateCounterclockwise(String imagePath, int degrees);
-	public abstract void rotateToward(String imagePath);
+	public abstract void rotateToward(String imagePath, double degrees);
 	public abstract void select(String imagePath);
 	public abstract void sendBack(String imagePath);
 	public abstract void sendFront(String imagePath);
@@ -44,7 +46,7 @@ public abstract class DataContainer {
 	
 	//Save Commands
 	public abstract void delete(String cShirt);
-	public abstract void saveAs(String cShirt);
-	public abstract void saveCShirt(String cShirt);
+	public abstract void saveAs(String cShirt) throws IOException;
+	public abstract void saveCShirt() throws IOException;
 	
 }

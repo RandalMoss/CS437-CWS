@@ -1,11 +1,9 @@
 package org.csula.cs437.main;
 
-
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.io.File;
 import java.util.ArrayList;
 import org.csula.cs437.main.Image;
 
@@ -45,7 +43,7 @@ public class CShirt
 		this.name = "untitled";
 		this.brightness = 100;
 		this.color = "#FFFFFF";
-
+		images = new ArrayList<Image>();
 	}
 
 	public CShirt(String name, int brightness, String color)
@@ -53,7 +51,6 @@ public class CShirt
 		this.name = name;
 		this.brightness = brightness;
 		this.color = color;
-		images = new ArrayList<Image>();
 	}
 
 	@Override
@@ -77,20 +74,21 @@ public class CShirt
 		return gson.fromJson(cShirtJson, CShirt.class);
 	}
 	
-	public void saveCShirt() throws IOException
+	public void saveCShirt(String path) throws IOException
 	{
-		ClassLoader classLoader = Thread.currentThread().getContextClassLoader();
-		String url = classLoader.getResource(".").getPath();
-		PrintWriter writer = new PrintWriter((url + "/CShirts/" + this.name + ".cShirt").replace("%20", " "));
+		saveCShirt(this.name, path);
+	}
+	
+	public void saveCShirt(String name, String path) throws IOException
+	{
+		PrintWriter writer = new PrintWriter((path + name + ".cShirt"));
 		writer.write(makeCShirtFile(this));
 		writer.close();
 	}
 	
-	public static CShirt loadCShirt(String cShirtName) throws IOException, JsonSyntaxException
+	public static CShirt loadCShirt(String cShirtPath) throws IOException, JsonSyntaxException
 	{
-		ClassLoader classLoader = Thread.currentThread().getContextClassLoader();
-		String url = classLoader.getResource(".").getPath();
-		BufferedReader reader = new BufferedReader( new FileReader((url + "/CShirts/" + cShirtName + ".cShirt").replace("%20", " ")));
+		BufferedReader reader = new BufferedReader(new FileReader(cShirtPath));
 		String nextLine;
 		String cShirtJson = "";
 		while((nextLine = reader.readLine()) != null )
@@ -124,29 +122,15 @@ public class CShirt
 			
 		}
 	}
-
+	public void add(String imageName) {
+		//dummy file path
+		String dummyFilePath = "img1.jpg";
+		Image image = new Image(dummyFilePath, imageName);
+		addImage(image);
+		//
+	}
 	//End construction zone
 	
-	//Testing main
-	public static void main(String[] args)
-	{
-		CShirt cShirt = new CShirt("test", 55, "#FF4C7B");
-		cShirt.addImage(new Image("This is some path", "and this is a name"));
-		cShirt.addImage(new Image("This is the second path", "and yet another name"));
-		
-		try {
-			cShirt.saveCShirt();
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		
-		try{
-			System.out.println(CShirt.loadCShirt("test").toString());
-		} catch (Exception e){
-			e.printStackTrace();
-		}
-	}
 	
 	
 	

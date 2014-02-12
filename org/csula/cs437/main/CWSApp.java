@@ -1,15 +1,27 @@
 package org.csula.cs437.main;
 
+import java.io.IOException;
+
 import org.csula.cs437.gui.cwsGUI;
 
+import com.google.gson.JsonSyntaxException;
+
 public class CWSApp {
-	static CShirt csContainer;
+	static CShirtController csContainer;
 	static ActionContainer ac;
 	static cwsGUI gui;
 	@SuppressWarnings("static-access")
 	public static void main(String[] args){
-		csContainer = new CShirt();
-		csContainer.addImage(new Image("images/sample.jpg", "sample"));
+		try {
+			csContainer = new CShirtController();
+		} catch (JsonSyntaxException e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
+		} catch (IOException e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
+		}
+		//csContainer.add(new Image("images/sample.jpg", "sample"));
 		ac = new ActionContainer();
 		gui = new cwsGUI(csContainer);
 		gui.createAndShowUI();
