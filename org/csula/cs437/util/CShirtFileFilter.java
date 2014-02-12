@@ -19,7 +19,7 @@ public class CShirtFileFilter extends FileFilter implements FilenameFilter{
 
 	@Override
 	public boolean accept(File dir, String name) {
-		return name.equals(".cShirt");
+		return name.endsWith(".cShirt");
 	}
 
 }

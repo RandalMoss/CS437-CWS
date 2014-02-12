@@ -2,6 +2,7 @@ package org.csula.cs437.main;
 
 import java.io.File;
 import java.io.IOException;
+import java.io.ObjectInputStream.GetField;
 
 import org.csula.cs437.util.CShirtFileFilter;
 
@@ -41,7 +42,7 @@ public class CShirtController extends DataContainer {
 	{
 		cShirtFiles = getCShirtFiles();
 		currentCShirtIndex = 0;
-		currentCShirt = CShirt.loadCShirt(cShirtFiles[0].getAbsolutePath().replace("%20", " "));
+		currentCShirt = CShirt.loadCShirt(cShirtFiles[0].getAbsolutePath());
 	}
 	
 	private File[] getCShirtFiles()
@@ -53,7 +54,8 @@ public class CShirtController extends DataContainer {
 	private String getPathToFiles()
 	{
 		ClassLoader classLoader = Thread.currentThread().getContextClassLoader();
-		return classLoader.getResource(".").getPath().replace("%20", " ");
+		System.out.println(classLoader.getResource(".").getPath().replace("%20", " ").substring(1).replace("/", "\\") + "CShirts\\");
+		return classLoader.getResource(".").getPath().replace("%20", " ").substring(1).replace("/", "\\") + "CShirts\\";
 	}
 	
 	@Override
@@ -289,4 +291,19 @@ public class CShirtController extends DataContainer {
 		currentCShirt.saveCShirt(getPathToFiles());
 	}
 
+	public static void main(String[] args)
+	{
+		try {
+		
+		CShirtController controller = new CShirtController();
+		controller.add("and this is a name");
+		controller.add("and yet another name");
+		
+		controller.saveCShirt();
+		
+		System.out.println(CShirt.loadCShirt(controller.getPathToFiles() + "test.cShirt").toString());
+		} catch (Exception e){
+			e.printStackTrace();
+		}
+	}
 }

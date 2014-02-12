@@ -75,7 +75,7 @@ public class CShirt
 	
 	public void saveCShirt(String name, String path) throws IOException
 	{
-		PrintWriter writer = new PrintWriter((path + "/CShirts/" + name + ".cShirt"));
+		PrintWriter writer = new PrintWriter((path + name + ".cShirt"));
 		writer.write(makeCShirtFile(this));
 		writer.close();
 	}
@@ -126,26 +126,6 @@ public class CShirt
 	}
 	//End construction zone
 	
-	//Testing main
-	public static void main(String[] args)
-	{
-		CShirt cShirt = new CShirt("test", 55, "#FF4C7B");
-		cShirt.addImage(new Image("This is some path", "and this is a name"));
-		cShirt.addImage(new Image("This is the second path", "and yet another name"));
-		
-		try {
-			cShirt.saveCShirt();
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		
-		try{
-			System.out.println(CShirt.loadCShirt("test").toString());
-		} catch (Exception e){
-			e.printStackTrace();
-		}
-	}
 	
 	
 	
