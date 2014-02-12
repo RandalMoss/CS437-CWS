@@ -26,7 +26,7 @@ public abstract class DataContainer {
 	public abstract void remove(String imagePath);
 	public abstract void rotateClockwise(String imagePath, double degrees);
 	public abstract void rotateCounterclockwise(String imagePath, double degrees);
-	public abstract void rotateToward(String imagePath);
+	public abstract void rotateToward(String imagePath, double degrees);
 	//public abstract void select(String imagePath);
 	public abstract void sendBack(String imagePath);
 	public abstract void sendFront(String imagePath);

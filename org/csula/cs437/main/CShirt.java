@@ -169,7 +169,7 @@ public class CShirt extends DataContainer
 	}
 
 	@Override
-	public void rotateToward(String imageName) {
+	public void rotateToward(String imageName, double degrees) {
 		System.out.println("Image rotated toward");
 		
 	}

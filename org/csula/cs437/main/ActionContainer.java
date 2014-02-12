@@ -100,8 +100,9 @@ String action = "";
 					System.out.println("Rotate Counterclockwise");
 				}
 				else if(action.equalsIgnoreCase("Rotate Toward")){
+					double degrees = cwsGUI.Rotate();
 					String imagePath = gui.getPath();
-					dc.rotateToward(imagePath);
+					dc.rotateToward(imagePath, degrees);
 					System.out.println("Rotate toward");
 				}
 				/*
