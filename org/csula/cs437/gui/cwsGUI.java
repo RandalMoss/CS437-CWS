@@ -38,9 +38,16 @@ public class cwsGUI {
 		path = this.path;
 	}
 
+
 	private static CShirtController shirt;
-	static JMenuItem open = new JMenuItem("Open");
-	static JMenuItem save = new JMenuItem("Save");
+
+	
+	public String getName(){
+		return filename;
+	}
+
+	// static JMenuItem open = new JMenuItem("Open");
+	// static JMenuItem save = new JMenuItem("Save");
 
 	static JFileChooser FileChooser = new JFileChooser(new File("."));
 	static String filename = new String();
@@ -69,29 +76,6 @@ public class cwsGUI {
 		return shirt;
 	}
 	
-	public static JMenuBar createMenuBar() {
-		JMenuBar menuBar;
-
-		// Create the menu bar.
-		menuBar = new JMenuBar();
-
-		// Build the first menu.
-		JMenu jMenu1 = new JMenu("File");
-
-		jMenu1.add(open);
-		jMenu1.add(save);
-
-		JMenu jMenu2 = new JMenu("Edit");
-
-		JMenuBar jMenuBar1 = new JMenuBar();
-		jMenuBar1.add(jMenu1);
-		jMenuBar1.add(jMenu2);
-
-		menuBar.add(jMenu1);
-		menuBar.add(jMenu2);
-
-		return menuBar;
-	}
 	//MenuBar not using
 	/*
 	 * public static JMenuBar createMenuBar() { JMenuBar menuBar;
@@ -125,38 +109,55 @@ public class cwsGUI {
 		}
 		
 		return path;
+		
 	}
 	
-	public static int Enlarge(){
+	public static double Enlarge(){
 		String enlarge = JOptionPane
 				.showInputDialog("Enter the amount to enlarge");
-		int enlargeAmt = Integer.parseInt( enlarge );
+		if(enlarge == ""){
+			double enlargeAmt = 1.0;
+			return enlargeAmt;
+		} else {
+		double enlargeAmt = Double.parseDouble( enlarge );
 		return enlargeAmt;
-			
+		}
 	}
 	
 	public static int Move(){
 		String move = JOptionPane
 				.showInputDialog("Enter the amount to move");
+		if(move == ""){
+			int moveAmt = 5;
+			return moveAmt;
+		} else {
 		int moveAmt = Integer.parseInt( move );
 		return moveAmt;
-			
+		}
 	}
 	
-	public static int Rotate(){
+	public static double Rotate(){
 		String rotate = JOptionPane
 				.showInputDialog("Enter the amount to rotate");
-		int rotateAmt = Integer.parseInt( rotate );
+		if(rotate == ""){
+			double rotateAmt = 5.0;
+			return rotateAmt;
+		} else {
+		double rotateAmt = Double.parseDouble( rotate );
 		return rotateAmt;
-			
+		}
 	}
 	
-	public static int Shrink(){
+	public static double Shrink(){
 		String shrink = JOptionPane
 				.showInputDialog("Enter the amount to shrink");
-		int shrinkAmt = Integer.parseInt( shrink );
+		if(shrink == ""){
+			double shrinkAmt = 0.5;
+			return shrinkAmt;
+		} else {
+		double shrinkAmt = Double.parseDouble( shrink );
 		return shrinkAmt;
-			
+		}
 	}
 	
 	//Button panel, for testing
@@ -236,14 +237,15 @@ public class cwsGUI {
 		frame.pack();
 		frame.setVisible(true);
 
-		frame.setJMenuBar(createMenuBar());
 		ImageCanvas ic = new ImageCanvas(1100, 500, shirt);
 		JPanel panel = new JPanel(new BorderLayout(5, 5));
 		panel.setBorder(BorderFactory.createEmptyBorder(10, 10, 10, 10));
+
 		panel.add(ic.getMyCanvas(), BorderLayout.WEST);
 		panel.add(ic.getMyCanvas2(), BorderLayout.CENTER);
 		//panel.add(optionButton(), BorderLayout.EAST);
 		//panel.add(optionPanel(), BorderLayout.SOUTH);
+
 		// panel = new Panel();
 		frame.add(panel);
 		frame.setSize(1050, 450);

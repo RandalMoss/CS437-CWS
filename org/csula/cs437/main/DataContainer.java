@@ -17,7 +17,7 @@ public abstract class DataContainer {
 	public abstract void brighten();
 	public abstract void backgroundColor(String newColor);
 	public abstract void darken();
-	public abstract void enlarge(String imagePath, int amount);
+	public abstract void enlarge(String imagePath, double amount);
 	public abstract void moveUp(String imagePath, int distance);
 	public abstract void moveDown(String imagePath, int distance);
 	public abstract void moveLeft(String imagePath, int distance);
@@ -26,13 +26,13 @@ public abstract class DataContainer {
 	public abstract void pushForward(String imagePath);
 	public abstract void redo();
 	public abstract void remove(String imagePath);
-	public abstract void rotateClockwise(String imagePath, int degrees);
-	public abstract void rotateCounterclockwise(String imagePath, int degrees);
+	public abstract void rotateClockwise(String imagePath, double degrees);
+	public abstract void rotateCounterclockwise(String imagePath, double degrees);
 	public abstract void rotateToward(String imagePath, double degrees);
-	public abstract void select(String imagePath);
+	//public abstract void select(String imagePath);
 	public abstract void sendBack(String imagePath);
 	public abstract void sendFront(String imagePath);
-	public abstract void shrink(String imagePath, int amount);
+	public abstract void shrink(String imagePath, double amount);
 	public abstract void stop();
 	public abstract void undo();
 	public abstract void viewBack();

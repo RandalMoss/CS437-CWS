@@ -83,7 +83,7 @@ public class CShirtController extends DataContainer {
 	}
 
 	@Override
-	public void enlarge(String imagePath, int amount) {
+	public void enlarge(String imagePath, double amount) {
 		// TODO Auto-generated method stub
 
 	}
@@ -137,25 +137,19 @@ public class CShirtController extends DataContainer {
 	}
 
 	@Override
-	public void rotateClockwise(String imagePath, int degrees) {
+	public void rotateClockwise(String imagePath, double degrees) {
 		// TODO Auto-generated method stub
 
 	}
 
 	@Override
-	public void rotateCounterclockwise(String imageName, int degrees) {
+	public void rotateCounterclockwise(String imageName, double degrees) {
 		// TODO Auto-generated method stub
 
 	}
 
 	@Override
 	public void rotateToward(String imagePath, double degrees) {
-		// TODO Auto-generated method stub
-
-	}
-
-	@Override
-	public void select(String imageName) {
 		// TODO Auto-generated method stub
 
 	}
@@ -173,7 +167,7 @@ public class CShirtController extends DataContainer {
 	}
 
 	@Override
-	public void shrink(String imagePath, int amount) {
+	public void shrink(String imagePath, double amount) {
 		// TODO Auto-generated method stub
 
 	}

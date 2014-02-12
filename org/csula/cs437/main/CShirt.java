@@ -111,11 +111,11 @@ public class CShirt
 	public ArrayList<Image> addImage(Image image)
 	{
 		images.add(image);
-		
+		System.out.println("Image Added");
 		return images;
 	}
 	
-	public void removeImage(String name)
+	public void removeImage(String imageName)
 	{
 		for(int i = 0; i < images.size(); i++)
 		{
@@ -129,9 +129,5 @@ public class CShirt
 		addImage(image);
 		//
 	}
-	//End construction zone
-	
-	
-	
-	
+
 }

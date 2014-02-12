@@ -5,6 +5,7 @@ import org.csula.cs437.gui.cwsGUI;
 import java.io.IOException;
 
 import org.csula.cs437.main.DataContainer;
+
 import org.csula.cs437.util.StringHandler;
 
 public class ActionContainer {
@@ -21,6 +22,7 @@ String action = "";
 	public void setActions(String action){
 		this.action = action;
 	}
+
 	public void perform(DataContainer dc, cwsGUI gui) {
 			String imageName = "";
 			if(action.equalsIgnoreCase("Add " + imageName)){
@@ -42,7 +44,7 @@ String action = "";
 			}
 			else if(action.equalsIgnoreCase("Enlarge")){
 				String imagePath = gui.getPath();
-				int amount = cwsGUI.Enlarge();
+				double amount = cwsGUI.Enlarge();
 				dc.enlarge(imagePath, amount);
 				System.out.println("Enlarge");
 			}
@@ -91,13 +93,13 @@ String action = "";
 			}
 			else if(action.equalsIgnoreCase("Rotate Clockwise")){
 				String imagePath = gui.getPath();
-				int degrees = cwsGUI.Rotate();
+				double degrees = cwsGUI.Rotate();
 				dc.rotateClockwise(imagePath, degrees);
 				System.out.println("Rotate Clockwise");
 			}
 			else if(action.equalsIgnoreCase("Rotate Counterclockwise")){
 				String imagePath = gui.getPath();
-				int degrees = cwsGUI.Rotate();
+				double degrees = cwsGUI.Rotate();
 				dc.rotateCounterclockwise(imagePath, degrees);
 				System.out.println("Rotate Counterclockwise");
 			}
@@ -106,11 +108,6 @@ String action = "";
 				String imagePath = gui.getPath();
 				dc.rotateToward(imagePath, degrees);
 				System.out.println("Rotate toward");
-			}
-			else if(action.equalsIgnoreCase("Select")){
-				String imagePath = gui.getPath();
-				dc.select(imagePath);
-				System.out.println("Select");
 			}
 			else if(action.equalsIgnoreCase("Send to Back")){
 				String imagePath = gui.getPath();
@@ -124,7 +121,7 @@ String action = "";
 			}
 			else if(action.equalsIgnoreCase("Shrink")){
 				String imagePath = gui.getPath();
-				int amount = cwsGUI.Shrink();
+				double amount = cwsGUI.Shrink();
 				dc.shrink(imagePath, amount);
 				System.out.println("Shrink");
 			}
