@@ -54,7 +54,7 @@ public class CShirtController extends DataContainer {
 	private String getPathToFiles()
 	{
 		ClassLoader classLoader = Thread.currentThread().getContextClassLoader();
-		System.out.println(classLoader.getResource(".").getPath().replace("%20", " ").substring(1).replace("/", "\\") + "CShirts\\");
+		//System.out.println(classLoader.getResource(".").getPath().replace("%20", " ").substring(1).replace("/", "\\") + "CShirts\\");
 		return classLoader.getResource(".").getPath().replace("%20", " ").substring(1).replace("/", "\\") + "CShirts\\";
 	}
 	
