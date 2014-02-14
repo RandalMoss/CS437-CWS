@@ -244,15 +244,19 @@ public class CShirtController extends DataContainer {
 	@Override
 	public void saveCShirt() throws IOException {
 		currentCShirt.saveCShirt(getPathToFiles());
+		
 	}
 
 	public static void main(String[] args)
 	{
 		try {
+		CShirt shirt = new CShirt("test", 100, "#FFFFFF");
+		shirt.add("and this is a name");
+		shirt.add("and yet another name");
+		
 		
 		CShirtController controller = new CShirtController();
-		controller.add("and this is a name");
-		controller.add("and yet another name");
+		shirt.saveCShirt(controller.getPathToFiles());
 		
 		controller.saveCShirt();
 		

@@ -119,7 +119,7 @@ public class CShirt
 	public ArrayList<Image> addImage(Image image)
 	{
 		images.add(image);
-		System.out.println("Image Added");
+		System.out.println("Image Added " + image.getName() + " " + image.getPath());
 		return images;
 	}
 	
@@ -132,7 +132,7 @@ public class CShirt
 	}
 	public void add(String imageName) {
 		//dummy file path
-		String dummyFilePath = "img1.jpg";
+		String dummyFilePath = "bin/images/sample.jpg";
 		Image image = new Image(dummyFilePath, imageName);
 		addImage(image);
 		//
