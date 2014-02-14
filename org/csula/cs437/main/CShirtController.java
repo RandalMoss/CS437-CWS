@@ -62,8 +62,7 @@ public class CShirtController extends DataContainer {
 	
 	@Override
 	public void add(String imageName) {
-		// TODO Auto-generated method stub
-
+		currentCShirt.add(imageName);
 	}
 
 	@Override
@@ -94,8 +93,8 @@ public class CShirtController extends DataContainer {
 
 	@Override
 	public void enlarge(String imagePath, double amount) {
-		// TODO Auto-generated method stub
-
+		
+		
 	}
 
 	@Override
@@ -142,7 +141,7 @@ public class CShirtController extends DataContainer {
 
 	@Override
 	public void remove(String imageName) {
-		// TODO Auto-generated method stub
+		currentCShirt.removeImage(imageName);
 
 	}
 

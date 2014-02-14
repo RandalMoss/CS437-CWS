@@ -26,6 +26,8 @@ String action = "";
 	public void perform(DataContainer dc, cwsGUI gui) {
 			String imageName = "";
 			if(action.equalsIgnoreCase("Add " + imageName)){
+				String imagePath = gui.Add();
+				imageName = gui.getName();
 				dc.add(imageName);
 				System.out.println("Add: " + imageName);
 			}
