@@ -21,7 +21,6 @@ public class CWSApp {
 			// TODO Auto-generated catch block
 			e1.printStackTrace();
 		}
-		csContainer.getCurrentCShirt().addImage(new Image("bin/images/sample.jpg", "sample"));
 		ac = new ActionContainer();
 		gui = new cwsGUI(csContainer);
 		gui.createAndShowUI();

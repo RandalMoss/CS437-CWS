@@ -123,11 +123,10 @@ public class CShirt
 		}
 	}
 	public void add(String imageName) {
-		//dummy file path
-		String dummyFilePath = "bin/images/sample.jpg";
-		Image image = new Image(dummyFilePath, imageName);
+		StringBuilder imagePath = new StringBuilder("bin/images/");
+		imagePath.append(imageName);
+		Image image = new Image(imagePath.toString(), imageName);
 		addImage(image);
-		//
 	}
 
 }

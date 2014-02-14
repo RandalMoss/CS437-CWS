@@ -242,9 +242,7 @@ public class CShirtController extends DataContainer {
 	{
 		try {
 		CShirt shirt = new CShirt("test", 100, "#FFFFFF");
-		shirt.add("and this is a name");
-		shirt.add("and yet another name");
-		
+		shirt.add("sample.jpg");
 		
 		CShirtController controller = new CShirtController();
 		shirt.saveCShirt(controller.getPathToFiles());
