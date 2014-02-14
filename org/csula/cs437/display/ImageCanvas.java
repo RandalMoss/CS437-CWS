@@ -67,6 +67,7 @@ public class ImageCanvas {
 			for(Image image : images){
 				BufferedImage bi;
 				try {
+					System.out.println("path to image " + image.getPath());
 					bi = ImageIO.read(new File(image.getPath()));
 					int newWidth = (int)(bi.getWidth() * image.getScale());
 					int newHeight = (int)(bi.getHeight() * image.getScale());

@@ -54,7 +54,7 @@ public class CShirtController extends DataContainer {
 	private String getPathToFiles()
 	{
 		ClassLoader classLoader = Thread.currentThread().getContextClassLoader();
-		//System.out.println(classLoader.getResource(".").getPath().replace("%20", " ").substring(1).replace("/", "\\") + "CShirts\\");
+		System.out.println(classLoader.getResource(".").getPath().replace("%20", " ").substring(1).replace("/", "\\") + "CShirts\\");
 		return classLoader.getResource(".").getPath().replace("%20", " ").substring(1).replace("/", "\\") + "CShirts\\";
 	}
 	
@@ -235,15 +235,19 @@ public class CShirtController extends DataContainer {
 	@Override
 	public void saveCShirt() throws IOException {
 		currentCShirt.saveCShirt(getPathToFiles());
+		
 	}
 
 	public static void main(String[] args)
 	{
 		try {
+		CShirt shirt = new CShirt("test", 100, "#FFFFFF");
+		shirt.add("and this is a name");
+		shirt.add("and yet another name");
+		
 		
 		CShirtController controller = new CShirtController();
-		controller.add("and this is a name");
-		controller.add("and yet another name");
+		shirt.saveCShirt(controller.getPathToFiles());
 		
 		controller.saveCShirt();
 		
