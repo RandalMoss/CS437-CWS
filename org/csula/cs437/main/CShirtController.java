@@ -14,6 +14,8 @@ public class CShirtController extends DataContainer {
 	private int currentCShirtIndex;
 	private CShirt currentCShirt;
 	
+	boolean stop = false;
+	
 	public File[] getcShirtFiles() {
 		return cShirtFiles;
 	}
@@ -66,20 +68,28 @@ public class CShirtController extends DataContainer {
 
 	@Override
 	public void brighten() {
-		// TODO Auto-generated method stub
+		int brightness = currentCShirt.getBrightness();
+		while(stop == false){
+		brightness += 5;
+		currentCShirt.setBrightness(brightness);
+		}
+		stop = false;
 
 	}
 
 	@Override
 	public void backgroundColor(String newColor) {
-		// TODO Auto-generated method stub
-
+		currentCShirt.setColor(newColor);
 	}
 
 	@Override
 	public void darken() {
-		// TODO Auto-generated method stub
-
+		int brightness = currentCShirt.getBrightness();
+		while(stop == false){
+			brightness -= 5;
+			currentCShirt.setBrightness(brightness);
+		}
+		stop = false;
 	}
 
 	@Override
@@ -174,8 +184,7 @@ public class CShirtController extends DataContainer {
 
 	@Override
 	public void stop() {
-		// TODO Auto-generated method stub
-
+		stop = true;
 	}
 
 	@Override

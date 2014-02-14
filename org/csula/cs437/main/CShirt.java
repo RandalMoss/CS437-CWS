@@ -19,7 +19,7 @@ public class CShirt
 
 	private ArrayList<Image> images = new ArrayList<Image>();
 
-	boolean stop = false;
+	//boolean stop = false;
 
 
 	public String getName() {
@@ -29,9 +29,17 @@ public class CShirt
 	public int getBrightness() {
 		return brightness;
 	}
+	
+	public void setBrightness(int brightness){
+		this.brightness = brightness;
+	}
 
 	public String getColor() {
 		return color;
+	}
+	
+	public void setColor(String color){
+		this.color = color;
 	}
 
 	public ArrayList<Image> getImages() {
