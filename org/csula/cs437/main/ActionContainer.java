@@ -2,11 +2,13 @@ package org.csula.cs437.main;
 
 
 import org.csula.cs437.gui.cwsGUI;
+
 import java.io.IOException;
 
 import org.csula.cs437.main.DataContainer;
-
 import org.csula.cs437.util.StringHandler;
+
+import com.google.gson.JsonSyntaxException;
 
 public class ActionContainer {
 String action = "";
@@ -104,7 +106,7 @@ String action = "";
 				System.out.println("Rotate Counterclockwise");
 			}
 			else if(action.equalsIgnoreCase("Rotate Toward")){
-				double degrees = gui.Rotate();
+				double degrees = cwsGUI.Rotate();
 				String imagePath = gui.getPath();
 				dc.rotateToward(imagePath, degrees);
 				System.out.println("Rotate toward");
@@ -144,20 +146,40 @@ String action = "";
 			
 			//change
 			else if(action.equalsIgnoreCase("Change Next cShirt")){
-				dc.changeNext();
+				try {
+					dc.changeNext();
+				} catch (JsonSyntaxException | IOException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
 				System.out.println("Change next cShirt");
 			}
 			else if(action.equalsIgnoreCase("Change Previous cShirt")){
-				dc.changePrev();
+				try {
+					dc.changePrev();
+				} catch (JsonSyntaxException | IOException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
 				System.out.println("Change previous cShirt");
 			}
 			else if(action.equalsIgnoreCase("Change to")){
 				String cShirt = "";
-				dc.changeTo(cShirt);
+				try {
+					dc.changeTo(cShirt);
+				} catch (JsonSyntaxException | IOException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
 				System.out.println("Change to");
 			}
 			else if(action.equalsIgnoreCase("Clear")){
-				dc.clear();
+				try {
+					dc.clear();
+				} catch (JsonSyntaxException | IOException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
 				System.out.println("Clear");
 			}
 				
@@ -183,7 +205,12 @@ String action = "";
 			}
 			else if(action.equalsIgnoreCase("Delete")){
 				String cShirt = "";
-				dc.delete(cShirt);
+				try {
+					dc.delete(cShirt);
+				} catch (JsonSyntaxException | IOException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
 				System.out.println("Delete");
 			}
 			else {
