@@ -2,23 +2,25 @@ package org.csula.cs437.main;
 
 import java.io.File;
 import java.io.IOException;
-import java.io.ObjectInputStream.GetField;
+import java.util.Arrays;
+import java.util.LinkedList;
 
 import org.csula.cs437.util.CShirtFileFilter;
+import org.csula.cs437.util.RotatingQueue;
 
 import com.google.gson.JsonSyntaxException;
 
 public class CShirtController extends DataContainer {
 	
-	private File[] cShirtFiles;
+	private RotatingQueue<File> cShirtFiles;
 	private int currentCShirtIndex;
 	private CShirt currentCShirt;
 	
-	public File[] getcShirtFiles() {
+	public RotatingQueue<File> getcShirtFiles() {
 		return cShirtFiles;
 	}
 
-	public void setcShirtFiles(File[] cShirtFiles) {
+	public void setcShirtFiles(RotatingQueue<File> cShirtFiles) {
 		this.cShirtFiles = cShirtFiles;
 	}
 
@@ -38,23 +40,44 @@ public class CShirtController extends DataContainer {
 		this.currentCShirt = currentCShirt;
 	}
 
+	/**
+	 * Creates a default shirt if none exist.
+	 * 
+	 * @throws JsonSyntaxException
+	 * @throws IOException
+	 */
 	CShirtController() throws JsonSyntaxException, IOException
 	{
 		cShirtFiles = getCShirtFiles();
 		currentCShirtIndex = 0;
-		currentCShirt = CShirt.loadCShirt(cShirtFiles[0].getAbsolutePath());
+		currentCShirt = loadHeadFile();
+		//Set default if no shirts exist
+		if(currentCShirt == null)
+		{
+			CShirt shirt = new CShirt("Default", 100, "#FFFFFF");
+			shirt.add("taco");
+			shirt.saveCShirt(getPathToFiles());
+			cShirtFiles = getCShirtFiles();
+			currentCShirtIndex = 0;
+			currentCShirt = CShirt.loadCShirt(cShirtFiles.get(0).getAbsolutePath());
+		}
 	}
 	
-	private File[] getCShirtFiles()
+	private CShirt loadHeadFile() throws JsonSyntaxException, IOException
+	{
+		return CShirt.loadCShirt(cShirtFiles.get(0).getAbsolutePath());
+	}
+	
+	private RotatingQueue<File> getCShirtFiles()
 	{
 		File folder = new File(getPathToFiles());
-		return folder.listFiles(new CShirtFileFilter());
+		return new RotatingQueue<File>(new LinkedList<File>(Arrays.asList(folder.listFiles(new CShirtFileFilter()))));
 	}
 	
 	private String getPathToFiles()
 	{
 		ClassLoader classLoader = Thread.currentThread().getContextClassLoader();
-		System.out.println(classLoader.getResource(".").getPath().replace("%20", " ").substring(1).replace("/", "\\") + "CShirts\\");
+		//System.out.println(classLoader.getResource(".").getPath().replace("%20", " ").substring(1).replace("/", "\\") + "CShirts\\");
 		return classLoader.getResource(".").getPath().replace("%20", " ").substring(1).replace("/", "\\") + "CShirts\\";
 	}
 	
@@ -197,39 +220,94 @@ public class CShirtController extends DataContainer {
 	}
 
 	@Override
-	public void changeNext() {
-		// TODO Auto-generated method stub
-
+	public void changeNext() throws JsonSyntaxException, IOException {
+		cShirtFiles.rotateForward();
+		currentCShirt = loadHeadFile();
 	}
 
 	@Override
-	public void changePrev() {
-		// TODO Auto-generated method stub
-
+	public void changePrev() throws JsonSyntaxException, IOException {
+		cShirtFiles.rotateBackward();
+		currentCShirt = loadHeadFile();
+	}
+	
+	/**
+	 * 
+	 * @param cShirt - name of shirt to be changed to
+	 * @return False if the shirt does not exist
+	 * @throws JsonSyntaxException
+	 * @throws IOException
+	 */
+	@Override
+	public boolean changeTo(String cShirt) throws JsonSyntaxException, IOException {
+		cShirtFiles.rotateForward();
+		CShirt temp;
+		boolean found = (temp = loadHeadFile()).getName().equals(cShirt);
+		boolean checkedAll = currentCShirt.getName().equals(cShirt);
+		
+		while(!found && !checkedAll)
+		{
+			cShirtFiles.rotateForward();
+			found = (temp = loadHeadFile()).getName().equals(cShirt);
+			checkedAll = currentCShirt.getName().equals(cShirt);
+		}
+		
+		if(found)
+		{
+			currentCShirt = temp;
+		}
+		
+		return found;
 	}
 
 	@Override
-	public void changeTo(String cShirt) {
+	public void clear() throws JsonSyntaxException, IOException {
 		// TODO Auto-generated method stub
-
+		changeTo("deafult");
+	}
+	
+	/**
+	 * 
+	 * @param cShirt - name of shirt to be deleted
+	 * @return false if shirt is not found
+	 * @throws JsonSyntaxException
+	 * @throws IOException
+	 */
+	@Override
+	public boolean delete(String cShirt) throws JsonSyntaxException, IOException {
+		// TODO Auto-generated method stub
+		boolean found = false;
+		
+		if(currentCShirt.getName().equals(cShirt))
+		{
+			File fileToDelete = cShirtFiles.pop();
+			fileToDelete.delete();
+			clear();
+			found = true;
+		}
+		else
+		{
+			File fileToDelete;
+			for(int i = 1; i < cShirtFiles.size(); i++)
+			{
+				if(cShirtFiles.get(i).getName().equals(cShirt))
+				{
+					fileToDelete = cShirtFiles.remove(i);
+					fileToDelete.delete();
+					cShirtFiles = getCShirtFiles();
+					found = true;
+				}
+			}
+		}
+		
+		return found;
 	}
 
 	@Override
-	public void clear() {
-		// TODO Auto-generated method stub
-
-	}
-
-	@Override
-	public void delete(String cShirt) {
-		// TODO Auto-generated method stub
-
-	}
-
-	@Override
-	public void saveAs(String cShirt) {
-		// TODO Auto-generated method stub
-
+	public void saveAs(String cShirt) throws IOException {
+		currentCShirt.saveCShirt(cShirt, getPathToFiles());
+		cShirtFiles = getCShirtFiles();
+		changeTo(cShirt);
 	}
 
 	@Override
@@ -242,12 +320,11 @@ public class CShirtController extends DataContainer {
 		try {
 		
 		CShirtController controller = new CShirtController();
-		controller.add("and this is a name");
-		controller.add("and yet another name");
 		
-		controller.saveCShirt();
+		System.out.println(controller.getCurrentCShirt().toString());
+		controller.changeNext();
+		System.out.println(controller.getCurrentCShirt().toString());
 		
-		System.out.println(CShirt.loadCShirt(controller.getPathToFiles() + "test.cShirt").toString());
 		} catch (Exception e){
 			e.printStackTrace();
 		}

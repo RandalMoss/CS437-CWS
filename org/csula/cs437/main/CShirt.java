@@ -81,6 +81,7 @@ public class CShirt
 	
 	public void saveCShirt(String name, String path) throws IOException
 	{
+		this.name = name;
 		PrintWriter writer = new PrintWriter((path + name + ".cShirt"));
 		writer.write(makeCShirtFile(this));
 		writer.close();
