@@ -2,6 +2,8 @@ package org.csula.cs437.main;
 
 import java.io.IOException;
 
+import com.google.gson.JsonSyntaxException;
+
 public abstract class DataContainer {
 	int id;
 	protected DataContainer() {
@@ -39,13 +41,13 @@ public abstract class DataContainer {
 	public abstract void viewFront();
 	
 	//Change Commands
-	public abstract void changeNext();
-	public abstract void changePrev();
-	public abstract void changeTo(String cShirt);
-	public abstract void clear();
+	public abstract void changeNext() throws JsonSyntaxException, IOException;
+	public abstract void changePrev() throws JsonSyntaxException, IOException;
+	public abstract boolean changeTo(String cShirt) throws JsonSyntaxException, IOException;
+	public abstract void clear() throws JsonSyntaxException, IOException;
 	
 	//Save Commands
-	public abstract void delete(String cShirt);
+	public abstract boolean delete(String cShirt) throws JsonSyntaxException, IOException;
 	public abstract void saveAs(String cShirt) throws IOException;
 	public abstract void saveCShirt() throws IOException;
 	
