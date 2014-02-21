@@ -265,8 +265,7 @@ public class cwsGUI {
 		JPanel panel = new JPanel(new BorderLayout(5, 5));
 		panel.setBorder(BorderFactory.createEmptyBorder(10, 10, 10, 10));
 
-		panel.add(ic.getMyCanvas(), BorderLayout.WEST);
-		panel.add(ic.getMyCanvas2(), BorderLayout.CENTER);
+		panel.add(ic.getMyCanvas(), BorderLayout.CENTER);
 		//panel.add(optionButton(), BorderLayout.EAST);
 		//panel.add(optionPanel(), BorderLayout.SOUTH);
 

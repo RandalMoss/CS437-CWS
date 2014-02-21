@@ -60,7 +60,7 @@ public class CShirt
 	{
 		this.name = "untitled";
 		this.brightness = 100;
-		this.color = "#FFFFFF";
+		this.color = "255.255.255";
 		images = new ArrayList<Image>();
 	}
 

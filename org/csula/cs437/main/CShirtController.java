@@ -54,7 +54,7 @@ public class CShirtController extends DataContainer {
 		//Set default if no shirts exist
 		if(currentCShirt == null)
 		{
-			CShirt shirt = new CShirt("Default", 100, "#FFFFFF");
+			CShirt shirt = new CShirt("Default", 100, "255.255.255");
 			shirt.add("taco");
 			shirt.saveCShirt(getPathToFiles());
 			cShirtFiles = getCShirtFiles();
@@ -77,7 +77,7 @@ public class CShirtController extends DataContainer {
 	private String getPathToFiles()
 	{
 		ClassLoader classLoader = Thread.currentThread().getContextClassLoader();
-		//System.out.println(classLoader.getResource(".").getPath().replace("%20", " ").substring(1).replace("/", "\\") + "CShirts\\");
+		System.out.println(classLoader.getResource(".").getPath().replace("%20", " ").substring(1).replace("/", "\\") + "CShirts\\");
 		return classLoader.getResource(".").getPath().replace("%20", " ").substring(1).replace("/", "\\") + "CShirts\\";
 	}
 	

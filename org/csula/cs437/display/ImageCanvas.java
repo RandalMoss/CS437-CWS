@@ -8,15 +8,12 @@ import java.awt.Graphics2D;
 import java.awt.Point;
 import java.awt.Rectangle;
 import java.awt.RenderingHints;
-<<<<<<< HEAD
 import java.awt.Shape;
 import java.awt.geom.Ellipse2D;
 import java.awt.geom.Line2D;
 import java.awt.geom.Path2D;
 import java.awt.geom.Rectangle2D;
-=======
 import java.awt.event.MouseEvent;
->>>>>>> c57401f4920734946c767693bba76a104a48c215
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
