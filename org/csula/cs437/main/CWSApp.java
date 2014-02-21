@@ -1,6 +1,7 @@
 package org.csula.cs437.main;
 
 import java.io.IOException;
+import java.util.Arrays;
 
 import org.csula.cs437.gui.cwsGUI;
 
@@ -25,6 +26,7 @@ public class CWSApp {
 		ac = new ActionContainer();
 		gui = new cwsGUI(csContainer);
 		gui.createAndShowUI();
+		cwsGUI.Select();
 		
 		//get the voice command action = voce.getvoicestuff()
 		//"chameleon wear shirt" is the "activation passphrase"

@@ -9,8 +9,12 @@ import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.GridLayout;
 import java.awt.Panel;
+import java.awt.Point;
+import java.awt.Rectangle;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 import java.io.File;
 
 import javax.swing.*;
@@ -28,12 +32,13 @@ import org.csula.cs437.main.Image;
 // shrink amount
 
 public class cwsGUI {
-	private String path;
 	
+	private String path;
+
 	public String getPath(){
 		return path;
 	}
-	
+
 	public void setPath(String path){
 		path = this.path;
 	}
@@ -41,7 +46,7 @@ public class cwsGUI {
 
 	private static CShirtController shirt;
 
-	
+
 	public String getName(){
 		return filename;
 	}
@@ -53,6 +58,8 @@ public class cwsGUI {
 	static String filename = new String();
 	static Panel panel;
 	static JFrame frame = new JFrame("Chameleon Wear Shirt");
+	public static int mouseX;
+	public static int mouseY;
 	
 	//Buttons
 	/*
@@ -66,16 +73,16 @@ public class cwsGUI {
 	static JButton Select = new JButton("Select");
 	static JButton Send = new JButton("Send");
 	static JButton Shrink = new JButton("Shrink");
-*/
-	
+	 */
+
 	public cwsGUI (CShirtController shirt){
 		this.shirt = shirt;
 	}
-	
+
 	public CShirtController getShirt(){
 		return shirt;
 	}
-	
+
 	//MenuBar not using
 	/*
 	 * public static JMenuBar createMenuBar() { JMenuBar menuBar;
@@ -100,30 +107,47 @@ public class cwsGUI {
 
 	public static String Add(){
 		String path = new String();
-		
+
 		if (FileChooser.showOpenDialog(frame) == JFileChooser.APPROVE_OPTION) {
 			File fin = FileChooser.getSelectedFile();
 			filename = fin.getName();
 			path = fin.getAbsolutePath();
 			System.out.println(path);
 		}
-		
+
 		return path;
-		
+
+	}
+
+//	public static boolean isSelected(){
+//		if(jcb.getSelectedItem() != null)
+//		return true;
+//		
+//	}
+	
+	public static String Select(){
+		JComboBox jcb = new JComboBox(CShirt.imagesArray());
+		jcb.setEditable(true);
+		JOptionPane.showMessageDialog( null, jcb, "Select a image to modify", JOptionPane.QUESTION_MESSAGE);
+		System.out.println(jcb.getSelectedItem()+ " is selected");
+		CShirt.currentImage = (String) jcb.getSelectedItem();
+		System.out.println(CShirt.currentImage+ " is saved as current image");
+		return CShirt.currentImage;
 	}
 	
 	public static double Enlarge(){
+		
 		String enlarge = JOptionPane
 				.showInputDialog("Enter the amount to enlarge");
 		if(enlarge == ""){
 			double enlargeAmt = 1.0;
 			return enlargeAmt;
 		} else {
-		double enlargeAmt = Double.parseDouble( enlarge );
-		return enlargeAmt;
+			double enlargeAmt = Double.parseDouble( enlarge );
+			return enlargeAmt;
 		}
 	}
-	
+
 	public static int Move(){
 		String move = JOptionPane
 				.showInputDialog("Enter the amount to move");
@@ -131,11 +155,11 @@ public class cwsGUI {
 			int moveAmt = 5;
 			return moveAmt;
 		} else {
-		int moveAmt = Integer.parseInt( move );
-		return moveAmt;
+			int moveAmt = Integer.parseInt( move );
+			return moveAmt;
 		}
 	}
-	
+
 	public static double Rotate(){
 		String rotate = JOptionPane
 				.showInputDialog("Enter the amount to rotate");
@@ -143,11 +167,11 @@ public class cwsGUI {
 			double rotateAmt = 5.0;
 			return rotateAmt;
 		} else {
-		double rotateAmt = Double.parseDouble( rotate );
-		return rotateAmt;
+			double rotateAmt = Double.parseDouble( rotate );
+			return rotateAmt;
 		}
 	}
-	
+
 	public static double Shrink(){
 		String shrink = JOptionPane
 				.showInputDialog("Enter the amount to shrink");
@@ -155,13 +179,13 @@ public class cwsGUI {
 			double shrinkAmt = 0.5;
 			return shrinkAmt;
 		} else {
-		double shrinkAmt = Double.parseDouble( shrink );
-		return shrinkAmt;
+			double shrinkAmt = Double.parseDouble( shrink );
+			return shrinkAmt;
 		}
 	}
-	
+
 	//Button panel, for testing
-	
+
 	/*public static Panel optionButton() {
 		Panel optionButton;
 
@@ -180,7 +204,7 @@ public class cwsGUI {
 		return optionButton;
 
 	}
-*/
+	 */
 	static class MyCanvas extends Canvas {
 
 		public MyCanvas() {
@@ -249,14 +273,38 @@ public class cwsGUI {
 		// panel = new Panel();
 		frame.add(panel);
 		frame.setSize(1050, 450);
+
+		/**
+		 * If mouselistener is used imagecanvas needs  
+		 * to extend panel instead of canvas
+		 */
+//		panel.addMouseListener(new MouseAdapter() {
+//		
+//			public void mouseClicked(MouseEvent e) {
+//				boolean isSelected;
+//				Point clicked = e.getPoint();
+//				Rectangle bounds = new Rectangle(0,0, 
+//						ImageCanvas.newWidth, ImageCanvas.newHeight);
+//				if (bounds.contains(clicked)) {
+//					isSelected = true;
+//					System.out.print("Image is selected");
+//					// target image was clicked
+//				}else{
+//					isSelected = false;
+//				}
+//					
+//			}
+//			
+//		});
+		
 	}
 
-	public static void main(String[] args) {
-		java.awt.EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				createAndShowUI();
+			public static void main(String[] args) {
+				java.awt.EventQueue.invokeLater(new Runnable() {
+					public void run() {
+						createAndShowUI();
 
+					}
+				});
 			}
-		});
-	}
-}
+		}
