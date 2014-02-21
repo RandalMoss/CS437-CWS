@@ -5,6 +5,9 @@ import java.io.FileReader;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.ArrayList;
+
+import javax.swing.Spring;
+
 import org.csula.cs437.main.Image;
 
 
@@ -16,12 +19,17 @@ public class CShirt
 	private String name;
 	private int brightness;
 	private String color;
-
-	private ArrayList<Image> images = new ArrayList<Image>();
-
+	
+	
+	private static ArrayList<Image> images = new ArrayList<Image>();
+	
 	boolean stop = false;
+	public static String currentImage;
 
-
+	public static String getCurrentImage(){
+		return currentImage;
+	}
+	
 	public String getName() {
 		return name;
 	}
@@ -37,7 +45,17 @@ public class CShirt
 	public ArrayList<Image> getImages() {
 		return images;
 	}
-
+	
+	public static String[] imagesArray(){
+        String[] imagesArray = new String[images.size()];
+        int i=0;
+        for(Image currentImage: images){
+            imagesArray[i] = currentImage.getName();
+            i++;
+        }
+        return imagesArray;
+    }
+	
 	public CShirt()
 	{
 		this.name = "untitled";
