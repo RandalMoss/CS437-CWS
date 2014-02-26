@@ -71,6 +71,9 @@ public class CShirtController extends DataContainer
 		currentCShirt = loadHeadFile();
 		// Set default if head cShirt is empty
 		if (currentCShirt == null)
+
+		System.out.println("This is the current CShirt" + currentCShirt.toString());
+
 		{
 			CShirt shirt = new CShirt("Default", 100, "255.255.255");
 			shirt.add("taco");
@@ -84,6 +87,7 @@ public class CShirtController extends DataContainer
 
 	private CShirt loadHeadFile() throws JsonSyntaxException, IOException
 	{
+		System.out.println(cShirtFiles.get(0).getAbsolutePath());
 		return CShirt.loadCShirt(cShirtFiles.get(0).getAbsolutePath());
 	}
 
@@ -103,7 +107,15 @@ public class CShirtController extends DataContainer
 //		return classLoader.getResource(".").getPath().replace("%20", " ")
 //				.substring(1).replace("/", "\\")
 //				+ "CShirts\\";
+		if(System.getProperty("os.name").equals("Linux")){
+			return "CShirts/";
+		}
+		
 		return "CShirts\\";
+
+//		ClassLoader classLoader = Thread.currentThread().getContextClassLoader();
+//		//System.out.println(classLoader.getResource(".").getPath().replace("%20", " ").substring(1).replace("/", "\\") + "CShirts\\");
+//		return classLoader.getResource(".").getPath().replace("%20", " ").substring(1).replace("/", "\\") + "CShirts\\";
 	}
 	
 	private String getPathToImages()
