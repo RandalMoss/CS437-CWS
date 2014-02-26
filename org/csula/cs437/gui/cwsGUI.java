@@ -60,6 +60,7 @@ public class cwsGUI {
 	static JFrame frame = new JFrame("Chameleon Wear Shirt");
 	public static int mouseX;
 	public static int mouseY;
+	public static ImageCanvas ic;
 	
 	//Buttons
 	/*
@@ -74,7 +75,11 @@ public class cwsGUI {
 	static JButton Send = new JButton("Send");
 	static JButton Shrink = new JButton("Shrink");
 	 */
-
+	
+	public ImageCanvas getImageCanvas(){
+		return ic;
+	}
+	
 	public cwsGUI (CShirtController shirt){
 		this.shirt = shirt;
 	}
@@ -241,7 +246,7 @@ public class cwsGUI {
 		frame.pack();
 		frame.setVisible(true);
 
-		ImageCanvas ic = new ImageCanvas(1100, 500, shirt);
+		ic = new ImageCanvas(1100, 500, shirt);
 		JPanel panel = new JPanel(new BorderLayout(5, 5));
 		panel.setBorder(BorderFactory.createEmptyBorder(10, 10, 10, 10));
 
@@ -251,7 +256,7 @@ public class cwsGUI {
 
 		// panel = new Panel();
 		frame.add(panel);
-		frame.setSize(1050, 450);
+		frame.setSize(1050, 500);
 
 		/**
 		 * If mouselistener is used imagecanvas needs  

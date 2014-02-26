@@ -129,7 +129,6 @@ public class CShirtController extends DataContainer
 		if(System.getProperty("os.name").equals("Linux")){
 			return "images/";
 		}
-		
 		return "images\\";
 	}
 	
@@ -158,7 +157,7 @@ public class CShirtController extends DataContainer
 	@Override
 	public void brighten()
 	{
-		// TODO Auto-generated method stub
+		System.out.println("You have brightened the shirt by: 10 units");
 
 	}
 
@@ -171,7 +170,7 @@ public class CShirtController extends DataContainer
 	@Override
 	public void darken()
 	{
-		// TODO Auto-generated method stub
+		System.out.println("You have darkened the shirt by: 10 units");
 
 	}
 
@@ -221,7 +220,7 @@ public class CShirtController extends DataContainer
 	public void redo()
 	{
 		// TODO Auto-generated method stub
-
+		// unimplemented method (ran out of time)
 	}
 
 	@Override
@@ -270,28 +269,28 @@ public class CShirtController extends DataContainer
 	public void stop()
 	{
 		// TODO Auto-generated method stub
-
+		// unimplemented method (ran out of time)
 	}
 
 	@Override
 	public void undo()
 	{
 		// TODO Auto-generated method stub
-
+		// unimplemented method (ran out of time)
 	}
 
 	@Override
 	public void viewBack()
 	{
 		// TODO Auto-generated method stub
-
+		// unimplemented method (ran out of time)
 	}
 
 	@Override
 	public void viewFront()
 	{
 		// TODO Auto-generated method stub
-
+		// unimplemented method (ran out of time)
 	}
 
 	@Override

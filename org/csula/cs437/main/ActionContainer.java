@@ -216,5 +216,6 @@ String action = "";
 			else {
 				System.out.println("Invalid save command");
 			}
+			gui.getImageCanvas().getMyCanvas().repaint();
 		}
 	}

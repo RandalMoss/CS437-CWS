@@ -44,7 +44,7 @@ public class ImageCanvas
 		return c1;
 	}
 
-	static class MyCanvas extends Canvas
+	public static class MyCanvas extends Canvas
 	{
 
 		public MyCanvas()
@@ -96,9 +96,8 @@ public class ImageCanvas
 						//g2.drawImage(bi, image.getxCoord(), image.getyCoord(), null);
 				}
 				bi = ImageIO.read(new File("bin/images/tshirt.png"));
-				g2.drawImage(bi, 0, 0, null);
+				g2.drawImage(bi, 266, 0, null);
 			} catch (IOException e) {
-				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}			
 		}
