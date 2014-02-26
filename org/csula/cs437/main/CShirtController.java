@@ -16,9 +16,14 @@ public class CShirtController extends DataContainer
 	private RotatingQueue<File> cShirtFiles;
 	private int currentCShirtIndex;
 	private CShirt currentCShirt;
+	
+	public String currentImage;
 
-	public RotatingQueue<File> getcShirtFiles()
-	{
+	public String getCurrentImage(){
+		return currentImage;
+	}
+	
+	public RotatingQueue<File> getcShirtFiles() {
 		return cShirtFiles;
 	}
 

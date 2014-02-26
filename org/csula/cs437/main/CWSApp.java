@@ -33,7 +33,6 @@ public class CWSApp
 		ac = new ActionContainer();
 		gui = new cwsGUI(csContainer);
 		gui.createAndShowUI();
-		cwsGUI.Select();
 		
 		//get the voice command action = voce.getvoicestuff()
 		//"chameleon wear shirt" is the "activation passphrase"

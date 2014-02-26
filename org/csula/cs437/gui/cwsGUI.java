@@ -118,21 +118,15 @@ public class cwsGUI {
 		return path;
 
 	}
-
-//	public static boolean isSelected(){
-//		if(jcb.getSelectedItem() != null)
-//		return true;
-//		
-//	}
 	
 	public static String Select(){
-
-//		jcb.setEditable(true);
-//		JOptionPane.showMessageDialog( null, jcb, "Select a image to modify", JOptionPane.QUESTION_MESSAGE);
-//		System.out.println(jcb.getSelectedItem()+ " is selected");
-//		CShirt.currentImage = (String) jcb.getSelectedItem();
-//		System.out.println(CShirt.currentImage+ " is saved as current image");
-		return "fix this";
+		JComboBox jcb = new JComboBox(shirt.getCurrentCShirt().imagesArray());
+		jcb.setEditable(true);
+		JOptionPane.showMessageDialog( null, jcb, "Select a image to modify", JOptionPane.QUESTION_MESSAGE);
+		System.out.println(jcb.getSelectedItem()+ " is selected");
+		shirt.currentImage = (String) jcb.getSelectedItem();
+		System.out.println(shirt.currentImage + " is saved as current image");
+		return shirt.currentImage;
 	}
 	
 	public static double Enlarge(){
