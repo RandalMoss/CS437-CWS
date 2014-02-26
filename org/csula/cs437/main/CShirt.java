@@ -293,7 +293,7 @@ public class CShirt
 	{
 		images.get(getImageIndex(imageName)).moveRight(increment);
 	}
-	
+
 	public void moveLeft(String imageName, int increment)
 	{
 		images.get(getImageIndex(imageName)).moveLeft(increment);
