@@ -18,20 +18,6 @@ public class CShirt
 	private String name;
 	private int brightness;
 	private String color;
-<<<<<<< HEAD
-	
-	
-	private static ArrayList<Image> images = new ArrayList<Image>();
-	
-	boolean stop = false;
-	public static String currentImage;
-
-	public static String getCurrentImage(){
-		return currentImage;
-	}
-	
-	public String getName() {
-=======
 
 	boolean stop = false;
 
@@ -69,7 +55,6 @@ public class CShirt
 
 	public String getName()
 	{
->>>>>>> Save,-Change,-Parser
 		return name;
 	}
 
@@ -88,7 +73,7 @@ public class CShirt
 		return images;
 	}
 	
-	public static String[] imagesArray(){
+	public String[] imagesArray(){
         String[] imagesArray = new String[images.size()];
         int i=0;
         for(Image currentImage: images){
@@ -178,22 +163,7 @@ public class CShirt
 
 	public void add(String imageName)
 	{
-<<<<<<< HEAD
-		for(int i = 0; i < images.size(); i++)
-		{
-			
-		}
-	}
-	public void add(String imageName) {
-		StringBuilder imagePath = new StringBuilder("bin/images/");
-		imagePath.append(imageName);
-		Image image = new Image(imagePath.toString(), imageName);
-=======
-		// dummy file path
-		String dummyFilePath = "img1.jpg";
-		Image image = new Image(dummyFilePath, imageName);
->>>>>>> Save,-Change,-Parser
-		addImage(image);
+		//TODO: Rebuild add with new file system
 	}
 
 	// end construction zone
@@ -332,7 +302,7 @@ public class CShirt
 	{
 		images.get(getImageIndex(imageName)).moveRight(increment);
 	}
-	
+
 	public void moveLeft(String imageName, int increment)
 	{
 		images.get(getImageIndex(imageName)).moveLeft(increment);

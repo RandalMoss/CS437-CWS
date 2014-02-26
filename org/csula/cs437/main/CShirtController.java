@@ -108,7 +108,7 @@ public class CShirtController extends DataContainer
 	
 	private String getPathToImages()
 	{
-		return "images";
+		return "images\\";
 	}
 
 	@Override

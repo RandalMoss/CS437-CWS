@@ -7,18 +7,26 @@ import org.csula.cs437.gui.cwsGUI;
 
 import com.google.gson.JsonSyntaxException;
 
-public class CWSApp {
+public class CWSApp
+{
 	static CShirtController csContainer;
 	static ActionContainer ac;
 	static cwsGUI gui;
+
 	@SuppressWarnings("static-access")
-	public static void main(String[] args){
-		try {
+	public static void main(String[] args)
+	{
+		try
+		{
 			csContainer = new CShirtController();
-		} catch (JsonSyntaxException e1) {
+		}
+		catch (JsonSyntaxException e1)
+		{
 			// TODO Auto-generated catch block
 			e1.printStackTrace();
-		} catch (IOException e1) {
+		}
+		catch (IOException e1)
+		{
 			// TODO Auto-generated catch block
 			e1.printStackTrace();
 		}
@@ -35,43 +43,44 @@ public class CWSApp {
 				System.out.println("This is a speech recognition test. " 
 					+ "Speak digits from 0-9 into the microphone. " 
 					+ "Speak 'quit' to quit.");
+				
+		boolean quit = false;
+		while (!quit)
+		{
+			// Normally, applications would do application-specific things
+			// here. For this sample, we'll just sleep for a little bit.
+			try
+			{
+				Thread.sleep(100);
+			}
+			catch (InterruptedException e)
+			{
+			}
 
-				boolean quit = false;
-				while (!quit)
+			while (voce.SpeechInterface.getRecognizerQueueSize() > 0)
+			{
+				String s = voce.SpeechInterface.popRecognizedString();
+
+				// Check if the string contains 'quit'.
+				if (-1 != s.indexOf("quit"))
 				{
-					// Normally, applications would do application-specific things 
-					// here.  For this sample, we'll just sleep for a little bit.
-					try
-					{
-						Thread.sleep(100);
-					}
-					catch (InterruptedException e)
-					{
-					}
-
-					while (voce.SpeechInterface.getRecognizerQueueSize() > 0)
-					{
-						String s = voce.SpeechInterface.popRecognizedString();
-
-						// Check if the string contains 'quit'.
-						if (-1 != s.indexOf("quit"))
-						{
-							quit = true;
-						}
-
-						ac.setActions(s);
-						ac.perform(csContainer, gui);
-						
-						System.out.println("You said: " + s);
-						if(s.equals(activation)){
-							System.out.println("Please enter the password: ");
-						}
-						//voce.SpeechInterface.synthesize(s);
-					}
+					quit = true;
 				}
 
-				voce.SpeechInterface.destroy();
-				System.exit(0);
-		
+				ac.setActions(s);
+				ac.perform(csContainer, gui);
+
+				System.out.println("You said: " + s);
+				if (s.equals(activation))
+				{
+					System.out.println("Please enter the password: ");
+				}
+				// voce.SpeechInterface.synthesize(s);
+			}
+		}
+
+		voce.SpeechInterface.destroy();
+		System.exit(0);
+
 	}
 }

@@ -126,13 +126,14 @@ public class cwsGUI {
 //	}
 	
 	public static String Select(){
-		JComboBox jcb = new JComboBox(CShirt.imagesArray());
-		jcb.setEditable(true);
-		JOptionPane.showMessageDialog( null, jcb, "Select a image to modify", JOptionPane.QUESTION_MESSAGE);
-		System.out.println(jcb.getSelectedItem()+ " is selected");
-		CShirt.currentImage = (String) jcb.getSelectedItem();
-		System.out.println(CShirt.currentImage+ " is saved as current image");
-		return CShirt.currentImage;
+//		JComboBox jcb = new JComboBox(CShirt.imagesArray());
+//		jcb.setEditable(true);
+//		JOptionPane.showMessageDialog( null, jcb, "Select a image to modify", JOptionPane.QUESTION_MESSAGE);
+//		System.out.println(jcb.getSelectedItem()+ " is selected");
+//		CShirt.currentImage = (String) jcb.getSelectedItem();
+//		System.out.println(CShirt.currentImage+ " is saved as current image");
+//		return CShirt.currentImage;
+		return "fix this";
 	}
 	
 	public static double Enlarge(){
