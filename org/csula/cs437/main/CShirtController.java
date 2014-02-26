@@ -1,6 +1,7 @@
 package org.csula.cs437.main;
 
 import java.io.File;
+import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.Arrays;
 import java.util.LinkedList;
@@ -125,14 +126,33 @@ public class CShirtController extends DataContainer
 	
 	private String getPathToImages()
 	{
+		if(System.getProperty("os.name").equals("Linux")){
+			return "images/";
+		}
+		
 		return "images\\";
+	}
+	
+	public String getImagePath(String imageName) throws FileNotFoundException
+	{
+		File[] imageFolder = new File(getPathToImages()).listFiles();
+		String fileName = "";
+		for(File f : imageFolder)
+		{
+			fileName = f.getName().split("\\.")[0].toLowerCase();
+			if(imageName.toLowerCase().equals(fileName))
+			{
+				return f.getPath();
+			}
+		}
+		
+		throw new FileNotFoundException("Image does not exist or imageName does not match file.");
 	}
 
 	@Override
 	public void add(String imageName)
 	{
-		// TODO Auto-generated method stub
-
+		currentCShirt.add(imageName);
 	}
 
 	@Override

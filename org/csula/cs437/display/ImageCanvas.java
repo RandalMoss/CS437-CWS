@@ -81,8 +81,9 @@ public class ImageCanvas
 			try {
 				BufferedImage bi;
 				for(Image image : images){
-						System.out.println("path to image " + image.getPath());
-						bi = ImageIO.read(new File(image.getPath()));
+						String imagePath = shirt.getImagePath(image.getPath());
+						System.out.println(imagePath);
+						bi = ImageIO.read(new File(shirt.getImagePath(imagePath)));
 						int newWidth = (int)(bi.getWidth() * image.getScale());
 						int newHeight = (int)(bi.getHeight() * image.getScale());
 						BufferedImage resized = new BufferedImage(newWidth,

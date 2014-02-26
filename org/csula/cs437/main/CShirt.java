@@ -146,28 +146,17 @@ public class CShirt
 		return makeCShirtObject(cShirtJson);
 	}
 
-	// This is the in-construction zone
-	// Begin contruction zone
-	private Image createNewImage(String path, String name)
-	{
-
-		return null;
-	}
-
-	public ArrayList<Image> addImage(Image image)
+	public void addImage(Image image)
 	{
 		images.add(image);
 		System.out.println("Image Added " + image.getName() + " " + image.getPath());
-		return images;
 	}
 
 	public void add(String imageName)
 	{
-		//TODO: Rebuild add with new file system
-
+		Image image = new Image(imageName, imageName);
+		this.addImage(image);
 	}
-
-	// end construction zone
 
 	private int getImageIndex(String imageName)
 	{

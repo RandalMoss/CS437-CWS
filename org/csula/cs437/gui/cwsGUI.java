@@ -104,20 +104,6 @@ public class cwsGUI {
 	 * 
 	 * }
 	 */
-
-	public static String Add(){
-		String path = new String();
-
-		if (FileChooser.showOpenDialog(frame) == JFileChooser.APPROVE_OPTION) {
-			File fin = FileChooser.getSelectedFile();
-			filename = fin.getName();
-			path = fin.getAbsolutePath();
-			System.out.println(path);
-		}
-
-		return path;
-
-	}
 	
 	public static String Select(){
 		JComboBox jcb = new JComboBox(shirt.getCurrentCShirt().imagesArray());
