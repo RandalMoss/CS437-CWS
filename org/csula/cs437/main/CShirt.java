@@ -21,14 +21,9 @@ public class CShirt
 	private String color;
 	
 	
-	private static ArrayList<Image> images = new ArrayList<Image>();
+	private ArrayList<Image> images = new ArrayList<Image>();
 	
 	boolean stop = false;
-	public static String currentImage;
-
-	public static String getCurrentImage(){
-		return currentImage;
-	}
 	
 	public String getName() {
 		return name;
@@ -46,7 +41,7 @@ public class CShirt
 		return images;
 	}
 	
-	public static String[] imagesArray(){
+	public String[] imagesArray(){
         String[] imagesArray = new String[images.size()];
         int i=0;
         for(Image currentImage: images){
