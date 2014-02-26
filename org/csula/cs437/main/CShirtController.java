@@ -56,9 +56,20 @@ public class CShirtController extends DataContainer
 	CShirtController() throws JsonSyntaxException, IOException
 	{
 		cShirtFiles = getCShirtFiles();
+		// Set default if no shirts exist
+		if(cShirtFiles.size() == 0)
+		{
+			CShirt shirt = new CShirt("Default", 100, "#FFFFFF");
+			shirt.add("taco");
+			shirt.saveCShirt(getPathToFiles());
+			cShirtFiles = getCShirtFiles();
+			currentCShirtIndex = 0;
+			currentCShirt = CShirt.loadCShirt(cShirtFiles.get(0)
+					.getAbsolutePath());
+		}
 		currentCShirtIndex = 0;
 		currentCShirt = loadHeadFile();
-		// Set default if no shirts exist
+		// Set default if head cShirt is empty
 		if (currentCShirt == null)
 		{
 			CShirt shirt = new CShirt("Default", 100, "#FFFFFF");
@@ -85,13 +96,19 @@ public class CShirtController extends DataContainer
 
 	private String getPathToFiles()
 	{
-		ClassLoader classLoader = Thread.currentThread()
-				.getContextClassLoader();
-		// System.out.println(classLoader.getResource(".").getPath().replace("%20",
-		// " ").substring(1).replace("/", "\\") + "CShirts\\");
-		return classLoader.getResource(".").getPath().replace("%20", " ")
-				.substring(1).replace("/", "\\")
-				+ "CShirts\\";
+//		ClassLoader classLoader = Thread.currentThread()
+//				.getContextClassLoader();
+//		 System.out.println(classLoader.getResource(".").getPath().replace("%20",
+//		 " ").substring(1).replace("/", "\\") + "CShirts\\");
+//		return classLoader.getResource(".").getPath().replace("%20", " ")
+//				.substring(1).replace("/", "\\")
+//				+ "CShirts\\";
+		return "CShirts\\";
+	}
+	
+	private String getPathToImages()
+	{
+		return "images";
 	}
 
 	@Override
