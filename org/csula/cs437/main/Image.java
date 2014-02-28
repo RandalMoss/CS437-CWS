@@ -51,7 +51,7 @@ public class Image
 	public Image()
 	{
 		section = Section.FRONT;
-		name = "default image one";
+		name = "default image";
 		path = "defaultImage.png";
 		xCoord = 0;
 		yCoord = 0;

@@ -82,8 +82,8 @@ public class ImageCanvas
 				BufferedImage bi;
 				for(Image image : images){
 						String imagePath = shirt.getImagePath(image.getPath());
-						System.out.println(imagePath);
-						bi = ImageIO.read(new File(shirt.getImagePath(imagePath)));
+//						System.out.println(imagePath);
+						bi = ImageIO.read(new File(imagePath));
 						int newWidth = (int)(bi.getWidth() * image.getScale());
 						int newHeight = (int)(bi.getHeight() * image.getScale());
 						BufferedImage resized = new BufferedImage(newWidth,
@@ -95,7 +95,7 @@ public class ImageCanvas
 					    //g2.dispose();
 						//g2.drawImage(bi, image.getxCoord(), image.getyCoord(), null);
 				}
-				bi = ImageIO.read(new File("bin/images/tshirt.png"));
+				bi = ImageIO.read(new File("images/tshirt.png"));
 				g2.drawImage(bi, 266, 0, null);
 			} catch (IOException e) {
 				e.printStackTrace();

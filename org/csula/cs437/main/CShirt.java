@@ -5,6 +5,8 @@ import java.io.FileReader;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collections;
 
 import javax.swing.Spring;
 
@@ -72,17 +74,19 @@ public class CShirt
 	{
 		return images;
 	}
-	
-	public String[] imagesArray(){
-        String[] imagesArray = new String[images.size()];
-        int i=0;
-        for(Image currentImage: images){
-            imagesArray[i] = currentImage.getName();
-            i++;
-        }
-        return imagesArray;
-    }
-	
+
+	public String[] imagesArray()
+	{
+		String[] imagesArray = new String[images.size()];
+		int i = 0;
+		for (Image currentImage : images)
+		{
+			imagesArray[i] = currentImage.getName();
+			i++;
+		}
+		return imagesArray;
+	}
+
 	public CShirt()
 	{
 		this.name = "untitled";
@@ -149,12 +153,66 @@ public class CShirt
 	public void addImage(Image image)
 	{
 		images.add(image);
-		System.out.println("Image Added " + image.getName() + " " + image.getPath());
+//		System.out.println("Image Added " + image.getName() + " "
+//				+ image.getPath());
 	}
 
 	public void add(String imageName)
 	{
-		Image image = new Image(imageName, imageName);
+		int imageNumber = 0;
+		ArrayList<Integer> numberList = new ArrayList<Integer>();
+		for (Image i : images)
+		{
+			String removedName = i.getName().replace(imageName, "");
+			try
+			{
+				numberList.add(Integer.parseInt(removedName));
+			}
+			catch (NumberFormatException e)
+			{
+				/*
+				 * Catching here means that the String in non-numeric and not
+				 * what I am looking for. I didn't want to do this like this,
+				 * but Java doesn't have an IsNumeric method.
+				 */
+			}
+		}
+
+		if (numberList.size() > 0)
+		{
+			
+			Collections.sort(numberList);
+			if (numberList.get(0) != 1)
+			{
+				imageNumber = 1;
+			}
+			else
+			{
+				boolean found = false;
+				if (numberList.size() > 1)
+				{
+					for (int i = 0; i < numberList.size() - 1 && !found; i++)
+					{
+						if (numberList.get(i) + 1 != numberList.get(i + 1))
+						{
+							imageNumber = numberList.get(i) + 1;
+							found = true;
+						}
+					}
+				}
+
+				if (!found)
+				{
+					imageNumber = numberList.size() + 1;
+				}
+			}
+		}
+		else
+		{
+			imageNumber = 1;
+		}
+
+		Image image = new Image(imageName, imageName + imageNumber);
 		this.addImage(image);
 	}
 

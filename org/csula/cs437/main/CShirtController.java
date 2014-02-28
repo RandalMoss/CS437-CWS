@@ -66,7 +66,7 @@ public class CShirtController extends DataContainer
 		if(cShirtFiles.size() == 0)
 		{
 			CShirt shirt = new CShirt("Default", 100, "#FFFFFF");
-			shirt.add("taco");
+			shirt.add("taco1");
 			shirt.saveCShirt(getPathToFiles());
 			cShirtFiles = getCShirtFiles();
 			currentCShirtIndex = 0;
@@ -76,13 +76,13 @@ public class CShirtController extends DataContainer
 		currentCShirtIndex = 0;
 		currentCShirt = loadHeadFile();
 		// Set default if head cShirt is empty
+		
+
+//		System.out.println("This is the current CShirt" + currentCShirt.toString());
 		if (currentCShirt == null)
-
-		System.out.println("This is the current CShirt" + currentCShirt.toString());
-
 		{
 			CShirt shirt = new CShirt("Default", 100, "255.255.255");
-			shirt.add("taco");
+			shirt.add("taco1");
 			shirt.saveCShirt(getPathToFiles());
 			cShirtFiles = getCShirtFiles();
 			currentCShirtIndex = 0;
@@ -93,7 +93,7 @@ public class CShirtController extends DataContainer
 
 	private CShirt loadHeadFile() throws JsonSyntaxException, IOException
 	{
-		System.out.println(cShirtFiles.get(0).getAbsolutePath());
+//		System.out.println(cShirtFiles.get(0).getAbsolutePath());
 		return CShirt.loadCShirt(cShirtFiles.get(0).getAbsolutePath());
 	}
 
@@ -406,14 +406,14 @@ public class CShirtController extends DataContainer
 
 			CShirtController controller = new CShirtController();
 			controller.changeNext();
-			controller.currentCShirt.add("number one");
-			controller.currentCShirt.add("number two");
-			controller.currentCShirt.add("number three");
-			controller.remove("number three");
-			controller.pushForward("number two");
-			controller.pushBackward("number one");
-			controller.sendFront("number three");
-			controller.sendBack("number two");
+//			controller.add("taco");
+//			controller.add("taco");
+//			controller.add("number one");
+//			controller.add("number one");
+//			controller.add("number one");
+//			controller.pushBackward("number one2");
+//			controller.remove("number one2");
+//			controller.add("number one");
 			for (Image i : controller.currentCShirt.getImages())
 			{
 				System.out.println(i.getName());
