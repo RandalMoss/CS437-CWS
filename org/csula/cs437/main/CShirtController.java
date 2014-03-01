@@ -358,6 +358,8 @@ public class CShirtController extends DataContainer
 			IOException
 	{
 		boolean found = false;
+		
+		cShirt += ".cShirt";
 
 		if (currentCShirt.getName().equals(cShirt))
 		{
@@ -414,6 +416,10 @@ public class CShirtController extends DataContainer
 //			controller.pushBackward("number one2");
 //			controller.remove("number one2");
 //			controller.add("number one");
+			controller.saveAs("Default1");
+			controller.changeTo("Default");
+			controller.saveCShirt();
+			controller.delete("Default1");
 			for (Image i : controller.currentCShirt.getImages())
 			{
 				System.out.println(i.getName());
