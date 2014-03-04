@@ -143,6 +143,24 @@ public class cwsGUI {
 		}
 	}
 	
+	public static String Save(){
+		String enlarge = JOptionPane
+				.showInputDialog("Save as...");
+		return enlarge;
+	}
+	
+	public static String Delete(){
+		String enlarge = JOptionPane
+				.showInputDialog("Enter name of CShirt to delete.");
+		return enlarge;
+	}
+	
+	public static String ChangeTo(){
+		String enlarge = JOptionPane
+				.showInputDialog("Change to...");
+		return enlarge;
+	}
+	
 	public static String getImageName(){
 		
 		String enlarge = JOptionPane

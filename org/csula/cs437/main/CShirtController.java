@@ -342,7 +342,7 @@ public class CShirtController extends DataContainer
 	@Override
 	public void clear() throws JsonSyntaxException, IOException
 	{
-		changeTo("deafult");
+		changeTo("Default");
 	}
 
 	/**

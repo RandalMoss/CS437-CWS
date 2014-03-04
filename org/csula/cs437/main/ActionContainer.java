@@ -27,7 +27,7 @@ String imageName = "";
 	}
 
 	public void perform(DataContainer dc, cwsGUI gui) {
-			if(action.equalsIgnoreCase("add" + imageName)){
+			if(action.equalsIgnoreCase("add")){
 				imageName = gui.getImageName();
 				dc.add(imageName);
 				System.out.println("Add: " + imageName);
@@ -149,28 +149,27 @@ String imageName = "";
 				imageName = gui.Select();
 			}
 			//change
-			else if(action.equalsIgnoreCase("Change Next cShirt")){
+			else if(action.equalsIgnoreCase("Change Next")){
 				try {
 					dc.changeNext();
 				} catch (JsonSyntaxException | IOException e) {
 					// TODO Auto-generated catch block
 					e.printStackTrace();
 				}
-				System.out.println("Change next cShirt");
+				System.out.println("Change next");
 			}
-			else if(action.equalsIgnoreCase("Change Previous cShirt")){
+			else if(action.equalsIgnoreCase("Change Previous")){
 				try {
 					dc.changePrev();
 				} catch (JsonSyntaxException | IOException e) {
 					// TODO Auto-generated catch block
 					e.printStackTrace();
 				}
-				System.out.println("Change previous cShirt");
+				System.out.println("Change previous");
 			}
 			else if(action.equalsIgnoreCase("Change to")){
-				String cShirt = "";
+				String cShirt = gui.ChangeTo();
 				try {
-					
 					dc.changeTo(cShirt);
 				} catch (JsonSyntaxException | IOException e) {
 					// TODO Auto-generated catch block
@@ -189,9 +188,9 @@ String imageName = "";
 			}
 				
 			//save
-			else if(action.equalsIgnoreCase("Save as ")){
+			else if(action.equalsIgnoreCase("Save as")){
 				try {
-					String cShirt = "";
+					String cShirt = gui.Save();;
 					dc.saveAs(cShirt);
 				} catch (IOException e) {
 					// TODO Auto-generated catch block
@@ -209,7 +208,7 @@ String imageName = "";
 				System.out.println("Save cShirt");
 			}
 			else if(action.equalsIgnoreCase("Delete")){
-				String cShirt = "";
+				String cShirt = gui.Delete();
 				try {
 					dc.delete(cShirt);
 				} catch (JsonSyntaxException | IOException e) {
