@@ -51,7 +51,7 @@ public class Image
 	public Image()
 	{
 		section = Section.FRONT;
-		name = "default image one";
+		name = "default image";
 		path = "defaultImage.png";
 		xCoord = 0;
 		yCoord = 0;
@@ -137,7 +137,7 @@ public class Image
 	{
 		if (scale - increment < 0.0)
 		{
-			scale = 0.0;
+			scale = 0.001;
 		}
 		else
 		{

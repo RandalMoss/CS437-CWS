@@ -104,9 +104,16 @@ public class ImageCanvas
 						bi = processedImage;
 						//System.out.println("...Done");
 					}
-						
 						int newWidth = (int)(bi.getWidth() * image.getScale());
+						if(newWidth <= 0)
+						{
+							newWidth = 1;
+						}
 						int newHeight = (int)(bi.getHeight() * image.getScale());
+						if(newHeight <= 0)
+						{
+							newHeight = 1;
+						}
 						BufferedImage resized = new BufferedImage(newWidth,
 								newHeight,
 								bi.getType());
