@@ -12,6 +12,7 @@ import com.google.gson.JsonSyntaxException;
 
 public class ActionContainer {
 String action = "";
+String imageName = "";
 	
 	public ActionContainer() {
 
@@ -26,8 +27,8 @@ String action = "";
 	}
 
 	public void perform(DataContainer dc, cwsGUI gui) {
-			String imageName = "";
-			if(action.equalsIgnoreCase("Add " + imageName)){
+			if(action.equalsIgnoreCase("add" + imageName)){
+				imageName = gui.getImageName();
 				dc.add(imageName);
 				System.out.println("Add: " + imageName);
 			}
@@ -35,8 +36,9 @@ String action = "";
 				dc.brighten();
 				System.out.println("Brighten");
 			}
-			else if(action.startsWith("Change Background")){
-				String newColor = StringHandler.getCol(action, 2);
+			else if(action.equalsIgnoreCase("Change Background")){
+				String newColor = "";
+				newColor = gui.getColor();
 				dc.backgroundColor(newColor);
 				System.out.println("Change background" );
 			}
@@ -47,41 +49,41 @@ String action = "";
 			else if(action.equalsIgnoreCase("Enlarge")){
 				String imagePath = gui.getPath();
 				double amount = cwsGUI.Enlarge();
-				dc.enlarge(imagePath, amount);
+				dc.enlarge(imageName, amount);
 				System.out.println("Enlarge");
 			}
 			else if(action.equalsIgnoreCase("Move Up")){
 				String imagePath = gui.getPath();
 				int distance = cwsGUI.Move();
-				dc.moveUp(imagePath, distance);
+				dc.moveUp(imageName, distance);
 				System.out.println("Move up");
 			}
 			else if(action.equalsIgnoreCase("Move Down")){
 				String imagePath = gui.getPath();
 				int distance = cwsGUI.Move();
-				dc.moveDown(imagePath, distance);
+				dc.moveDown(imageName, distance);
 				System.out.println("Move down");
 			}
 			else if(action.equalsIgnoreCase("Move Left")){
 				String imagePath = gui.getPath();
 				int distance = cwsGUI.Move();
-				dc.moveLeft(imagePath, distance);
+				dc.moveLeft(imageName, distance);
 				System.out.println("Move left");
 			}
 			else if(action.equalsIgnoreCase("Move Right")){
 				String imagePath = gui.getPath();
 				int distance = cwsGUI.Move();
-				dc.moveRight(imagePath, distance);
+				dc.moveRight(imageName, distance);
 				System.out.println("Move right");
 			}
 			else if(action.equalsIgnoreCase("Push Backward")){
 				String imagePath = gui.getPath();
-				dc.pushBackward(imagePath);
+				dc.pushBackward(imageName);
 				System.out.println("Push backward");
 			}
 			else if(action.equalsIgnoreCase("Push Foward")){
 				String imagePath = gui.getPath();
-				dc.pushForward(imagePath);
+				dc.pushForward(imageName);
 				System.out.println("Push forward");
 			}
 			else if(action.equalsIgnoreCase("Redo")){
@@ -90,41 +92,41 @@ String action = "";
 			}
 			else if(action.equalsIgnoreCase("Remove")){
 				String imagePath = gui.getPath();
-				dc.remove(imagePath);
+				dc.remove(imageName);
 				System.out.println("Remove");
 			}
 			else if(action.equalsIgnoreCase("Rotate Clockwise")){
 				String imagePath = gui.getPath();
 				double degrees = cwsGUI.Rotate();
-				dc.rotateClockwise(imagePath, degrees);
+				dc.rotateClockwise(imageName, degrees);
 				System.out.println("Rotate Clockwise");
 			}
 			else if(action.equalsIgnoreCase("Rotate Counterclockwise")){
 				String imagePath = gui.getPath();
 				double degrees = cwsGUI.Rotate();
-				dc.rotateCounterclockwise(imagePath, degrees);
+				dc.rotateCounterclockwise(imageName, degrees);
 				System.out.println("Rotate Counterclockwise");
 			}
 			else if(action.equalsIgnoreCase("Rotate Toward")){
 				double degrees = cwsGUI.Rotate();
 				String imagePath = gui.getPath();
-				dc.rotateToward(imagePath, degrees);
+				dc.rotateToward(imageName, degrees);
 				System.out.println("Rotate toward");
 			}
 			else if(action.equalsIgnoreCase("Send to Back")){
 				String imagePath = gui.getPath();
-				dc.sendBack(imagePath);
+				dc.sendBack(imageName);
 				System.out.println("Send to back");
 			}
 			else if(action.equalsIgnoreCase("Send to Front")){
 				String imagePath = gui.getPath();
-				dc.sendFront(imagePath);
+				dc.sendFront(imageName);
 				System.out.println("Send to front");
 			}
 			else if(action.equalsIgnoreCase("Shrink")){
 				String imagePath = gui.getPath();
 				double amount = cwsGUI.Shrink();
-				dc.shrink(imagePath, amount);
+				dc.shrink(imageName, amount);
 				System.out.println("Shrink");
 			}
 			else if(action.equalsIgnoreCase("Stop")){
@@ -143,7 +145,9 @@ String action = "";
 				dc.viewFront();
 				System.out.println("View Front");
 			}
-			
+			else if(action.equalsIgnoreCase("Select")){
+				imageName = gui.Select();
+			}
 			//change
 			else if(action.equalsIgnoreCase("Change Next cShirt")){
 				try {
@@ -166,6 +170,7 @@ String action = "";
 			else if(action.equalsIgnoreCase("Change to")){
 				String cShirt = "";
 				try {
+					
 					dc.changeTo(cShirt);
 				} catch (JsonSyntaxException | IOException e) {
 					// TODO Auto-generated catch block

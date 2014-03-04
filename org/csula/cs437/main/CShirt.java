@@ -164,6 +164,8 @@ public class CShirt
 		boolean found = false;
 		while (index < images.size() && !found)
 		{
+			System.out.println(images.get(index).getName());
+			System.out.println("image name is = " + imageName);
 			if (images.get(index).getName().equals(imageName))
 			{
 				found = true;

@@ -57,6 +57,13 @@ public class ImageCanvas
 		{
 			Graphics2D g2;
 			g2 = (Graphics2D) g;
+			String[] colorString = shirt.getCurrentCShirt().getColor().split("\\.");
+			int r = Integer.parseInt(colorString[0]);
+			int gg = Integer.parseInt(colorString[1]);
+			int b = Integer.parseInt(colorString[2]);
+			Color color = new Color(r, gg, b);
+			g2.setColor(color);
+			g2.fillRect(0, 0, 1050, 500);
 //			g2.drawString("custom canvas area 1", 70, 70);
 //			g2.drawLine(5, 50, 180, 5);
 //			g2.drawLine(5, 50, 30, 145);
@@ -75,7 +82,8 @@ public class ImageCanvas
 //			g2.setClip(ellipse);
 //			rect.setRect(0+5, 0+5, 40-10, 50-10);
 //			g2.clip(rect);
-			
+			int frameWidth = 1050;
+			int frameHeight = 500;
 			ArrayList<Image> images = new ArrayList<Image>();
 			images = shirt.getCurrentCShirt().getImages();
 			try {
@@ -83,7 +91,20 @@ public class ImageCanvas
 				for(Image image : images){
 						String imagePath = shirt.getImagePath(image.getPath());
 						System.out.println(imagePath);
-						bi = ImageIO.read(new File(shirt.getImagePath(imagePath)));
+						bi = ImageIO.read(new File(imagePath));
+						
+					if (image.getRotation() > 0) {
+						System.out.println("Rotating");
+						System.out.println("Rotating the original Image By: "+image.getRotation()+" degrees");
+						BufferedImage processedImage=rotateMyImage(bi, image.getRotation());
+						System.out.println("...Done\n");
+						 
+						//System.out.println("Writing the rotated image to: "+ "images/sample1.png");
+						//writeImage(processedImage, "images/sample1.png", "png");
+						bi = processedImage;
+						//System.out.println("...Done");
+					}
+						
 						int newWidth = (int)(bi.getWidth() * image.getScale());
 						int newHeight = (int)(bi.getHeight() * image.getScale());
 						BufferedImage resized = new BufferedImage(newWidth,
@@ -91,15 +112,34 @@ public class ImageCanvas
 								bi.getType());
 					    //g2 = resized.createGraphics();
 					    g2.setRenderingHint(RenderingHints.KEY_INTERPOLATION, RenderingHints.VALUE_INTERPOLATION_BILINEAR);
-					    g2.drawImage(bi, 0, 0, newWidth, newHeight, 0, 0, bi.getWidth(), bi.getHeight(), null);
+					    g2.drawImage(bi,
+					    		frameWidth / 2 + image.getxCoord() - (newWidth / 2),
+					    		frameHeight / 2 + image.getyCoord() - (newHeight / 2),
+					    		frameWidth / 2 + newWidth + image.getxCoord() - (newWidth / 2),
+					    		frameHeight / 2 + newHeight + image.getyCoord() - (newHeight / 2), 0, 0, bi.getWidth(), bi.getHeight(), null);
 					    //g2.dispose();
 						//g2.drawImage(bi, image.getxCoord(), image.getyCoord(), null);
 				}
-				bi = ImageIO.read(new File("bin/images/tshirt.png"));
-				g2.drawImage(bi, 266, 0, null);
+				bi = ImageIO.read(new File("images/tshirt.png"));
+				g2.drawImage(bi, 0, 0, null);
 			} catch (IOException e) {
 				e.printStackTrace();
 			}			
 		}
 	}
+	
+	public static BufferedImage rotateMyImage(BufferedImage img, double angle) {
+		int w = img.getWidth();
+		int h = img.getHeight();
+		BufferedImage dimg =new BufferedImage(w, h, img.getType());
+		Graphics2D g = dimg.createGraphics();
+		g.setRenderingHint(RenderingHints.KEY_ANTIALIASING, // Anti-alias!
+		RenderingHints.VALUE_ANTIALIAS_ON);
+		 
+		g.rotate(Math.toRadians(angle), w/2, h/2);
+		 
+		g.drawImage(img, null, 0, 0);
+		return dimg;
+		}
+	
 }

@@ -111,13 +111,23 @@ public class cwsGUI {
 	 */
 	
 	public static String Select(){
-		JComboBox jcb = new JComboBox(shirt.getCurrentCShirt().imagesArray());
+		JComboBox<String> jcb = new JComboBox<String>(shirt.getCurrentCShirt().imagesArray());
 		jcb.setEditable(true);
 		JOptionPane.showMessageDialog( null, jcb, "Select a image to modify", JOptionPane.QUESTION_MESSAGE);
 		System.out.println(jcb.getSelectedItem()+ " is selected");
 		shirt.currentImage = (String) jcb.getSelectedItem();
 		System.out.println(shirt.currentImage + " is saved as current image");
-		return shirt.currentImage;
+		return jcb.getSelectedItem().toString();
+	}
+	
+	public static String SelectCShirt(){
+		JComboBox<String> jcb = new JComboBox<String>(shirt.getCurrentCShirt().imagesArray());
+		jcb.setEditable(true);
+		JOptionPane.showMessageDialog( null, jcb, "Select a image to modify", JOptionPane.QUESTION_MESSAGE);
+		System.out.println(jcb.getSelectedItem()+ " is selected");
+		shirt.currentImage = (String) jcb.getSelectedItem();
+		System.out.println(shirt.currentImage + " is saved as current image");
+		return jcb.getSelectedItem().toString();
 	}
 	
 	public static double Enlarge(){
@@ -131,6 +141,13 @@ public class cwsGUI {
 			double enlargeAmt = Double.parseDouble( enlarge );
 			return enlargeAmt;
 		}
+	}
+	
+	public static String getImageName(){
+		
+		String enlarge = JOptionPane
+				.showInputDialog("Enter the image name to add");
+		return enlarge;
 	}
 
 	public static int Move(){
@@ -256,7 +273,7 @@ public class cwsGUI {
 
 		// panel = new Panel();
 		frame.add(panel);
-		frame.setSize(1050, 500);
+		frame.setSize(1050, 550);
 
 		/**
 		 * If mouselistener is used imagecanvas needs  
@@ -290,5 +307,12 @@ public class cwsGUI {
 
 					}
 				});
+			}
+
+			public String getColor() {
+					
+				String color = JOptionPane
+							.showInputDialog("Enter color in format \"rrr.ggg.bbb\"");
+				return color;
 			}
 		}
