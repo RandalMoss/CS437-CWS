@@ -328,7 +328,7 @@ public class CShirtController extends DataContainer
 		{
 			cShirtFiles.rotateForward();
 			found = (temp = loadHeadFile()).getName().equals(cShirt);
-			checkedAll = currentCShirt.getName().equals(cShirt);
+			checkedAll = currentCShirt.getName().equals(temp.getName());
 		}
 
 		if (found)

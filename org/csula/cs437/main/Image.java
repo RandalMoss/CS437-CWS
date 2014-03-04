@@ -64,7 +64,7 @@ public class Image
 		section = Section.FRONT;
 		xCoord = 0;
 		yCoord = 0;
-		scale = 2.0;
+		scale = 1.0;
 		rotation = 0.0;
 
 		this.name = name;
@@ -73,13 +73,13 @@ public class Image
 
 	public int moveUp(int increment)
 	{
-		yCoord += increment;
+		yCoord -= increment;
 		return yCoord;
 	}
 
 	public int moveDown(int increment)
 	{
-		yCoord -= increment;
+		yCoord += increment;
 		return yCoord;
 	}
 
@@ -137,7 +137,7 @@ public class Image
 	{
 		if (scale - increment < 0.0)
 		{
-			scale = 0.0;
+			scale = 0.001;
 		}
 		else
 		{
